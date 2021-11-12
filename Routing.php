@@ -1,19 +1,25 @@
 <?php
 
-class Router
-{
-    public static function run(?string $uri)
-    {
-        $controller = new DashboardController();
-        if($uri === 'login')
-        {
-            //open login page
-            $controller->login();
+require_once 'src/controlles/DefaultController.php';
+
+class Router {
+
+    public static $routes;
+
+    public static function get($url, $view) {
+        self::$routes[$url] = $view;
+    }
+
+    public static function run ($url) {
+        $action = explode("/", $url)[0];
+        if (!array_key_exists($action, self::$routes)) {
+            die("Wrong url!");
         }
-        if($uri === 'dashboard')
-        {
-            //open dashboard page
-            $controller->dashboard();
-        }
+
+        $controller = self::$routes[$action];
+        $object = new $controller;
+        $action = $action ?: 'index';
+
+        $object->$action();
     }
 }

@@ -1,6 +1,10 @@
 <?php
 
-echo 'Hello World';
+require_once "Routing.php";
 
-$testVar = "test";
-echo $testVar;
+$path = trim($_SERVER['REQUEST_URI'], '/');
+$path = parse_url( $path, PHP_URL_PATH);
+
+Router::get('', 'DefaultController');
+Router::get('dashboard', 'DefaultController');
+Router::run($path);
