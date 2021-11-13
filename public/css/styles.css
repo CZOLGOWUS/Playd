@@ -1,8 +1,11 @@
 body
 {
+    background-color: #EBECED;
     display: flex;
     flex-direction: row;
     margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
 
 }
 
@@ -20,6 +23,42 @@ h1
   margin: 0;
 }
 
+a
+{
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-bar
+{
+  width: 100%;
+
+  margin: 0;
+  padding: 1em;
+  font-size: 1.5em;
+  
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.nav-option
+{
+  display: flex;
+  align-self: flex-end;
+}
+
+.nav-button
+{
+  margin: 0em 1em 0em 0em;
+}
+
+.main-gradient
+{
+  background-image: linear-gradient(to bottom,#F94851, #FD7A49);
+}
 
 .logo
 {
