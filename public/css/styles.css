@@ -79,6 +79,11 @@ a
   background-image: linear-gradient(to bottom,#F94851, #FD7A49);
 }
 
+.svg-theme-color
+{
+  fill: linear-gradient(to bottom,#F94851, #FD7A49);
+}
+
 .logo
 {
     background-color: lightpink;
