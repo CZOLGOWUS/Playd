@@ -6,8 +6,8 @@ class Router {
 
     public static $routes;
 
-    public static function get($url, $view) {
-        self::$routes[$url] = $view;
+    public static function get($url, $controller) {
+        self::$routes[$url] = $controller;
     }
 
     public static function run ($url) {
@@ -17,9 +17,9 @@ class Router {
         }
 
         $controller = self::$routes[$action];
-        $object = new $controller;
+        $controllerObject = new $controller;
         $action = $action ?: 'index';
 
-        $object->$action();
+        $controllerObject->$action();
     }
 }
