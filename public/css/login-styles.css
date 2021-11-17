@@ -1,18 +1,177 @@
-#content-container
-{
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+#base-container {
     display: flex;
-    justify-content: space-around;
-    
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-#logo
-{
-    width: 30%;
-}
-
-#login
-{
-    width: 50em;
-    justify-content: center;
+.content-container {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
     align-items: center;
+    justify-content: center;
 }
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#logo {
+    width: 40%;
+}
+
+#login-window {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+
+    width: 40%;
+}
+
+#login-window>.left
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+}
+
+#login-window>.left>.input-box {
+    border-style: none none solid none;
+    
+    padding: 0 40% 0.3em 0;
+    
+    color: rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+#login-window>.right {
+    
+    position: relative;
+    text-align: right;
+    
+    width: 100%;
+}
+
+#login-window>.right>.button-75 {
+    position: absolute;
+
+    bottom: -40%;
+    left: 30%;
+}
+
+
+
+.left>.fotter
+{
+    margin-top: 1em;
+}
+
+.input-box>input{
+    border-style: none;
+    background-color: #EBECED;
+
+    font-size: 1.3em;
+    margin: 1em 0 0.3em 1em;
+}
+
+input:focus
+{
+    outline: none;
+    border:none;
+}
+
+
+h4
+{
+    color: #FFAAAE;
+}
+
+h3{
+    font-size: 1em;
+    color: #616161;
+}
+
+h3>a
+{
+    font-size: 1em;
+    color: #616161;
+}
+
+h3, h4
+{
+    margin: 0.2em 0;
+}
+
+
+
+
+
+
+
+
+.button-75 {
+    align-items: center;
+    background-image: linear-gradient(#F94851, #FD7A49);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-family: "Codec cold",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    height: 54px;
+    justify-content: center;
+    letter-spacing: .4px;
+    line-height: 1;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-75:active {
+    outline: 0;
+  }
+  
+  .button-75:hover {
+    outline: 0;
+  }
+  
+  .button-75 span {
+    transition: all 200ms;
+  }
+  
+  .button-75:hover span {
+    transform: scale(.9);
+    opacity: .75;
+  }
+  
+  @media screen and (max-width: 991px) {
+    .button-75 {
+      font-size: 15px;
+      height: 50px;
+    }
+  
+    .button-75 span {
+      line-height: 50px;
+    }
+  }
