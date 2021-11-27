@@ -67,3 +67,19 @@ a
 {
   background-image: linear-gradient(to bottom,#F94851, #FD7A49);
 }
+
+@media screen and (max-width:1000px)
+{
+
+    .nav-bar
+    {
+      display: flex;
+        flex-direction: column;
+    }
+
+    .nav-bar > div
+    {
+      display: flex;
+      flex-direction: column;
+    }
+}
