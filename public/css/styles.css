@@ -67,24 +67,3 @@ a
 {
   background-image: linear-gradient(to bottom,#F94851, #FD7A49);
 }
-
-
-
-
-@media screen and (max-device-width:411px),screen and (max-device:411px) {
-    body{
-        flex-direction: column;
-    }
-
-    .logo
-    {
-        height: 20vh;
-    }
-
-    .login_form
-    {
-        height: 80vh;
-    }
-}
-
-
