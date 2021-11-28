@@ -6,9 +6,9 @@ $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url( $path, PHP_URL_PATH);
 
 Router::get('', 'DefaultController');
-Router::get('index', 'DefaultController');
-Router::get('login', 'DefaultController');
-Router::get('dashboard', 'DefaultController');
+Router::get('indexPage', 'DefaultController');
+Router::get('login', 'SecurityController');
+Router::post('dashboard', 'DefaultController');
 
 
 Router::run($path);

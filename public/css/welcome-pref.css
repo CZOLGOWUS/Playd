@@ -13,7 +13,7 @@ body,html
 
 }
 
-@media screen and (max-device-width:411px),screen and (max-device:411px) {
+@media screen and (max-device-width:411px),screen and (max-device-width:411px) {
     body{
         flex-direction: column;
     }
@@ -30,7 +30,7 @@ body,html
 }
 
 
-@media screen and (max-device-width:411px),screen and (max-device:411px) {
+@media screen and (max-device-width:411px),screen and (max-device-width:411px) {
     body{
         flex-direction: column;
     }

@@ -7,7 +7,7 @@ class DefaultController extends AppController
 
     public function index()
     {
-        $this->render('index');
+        $this->render('indexPage');
     }
 
     public function login()
@@ -19,4 +19,5 @@ class DefaultController extends AppController
     {
         $this->render('dashboard');
     }
+
 }

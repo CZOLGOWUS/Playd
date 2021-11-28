@@ -20,13 +20,14 @@ class AppController
         return $this->request === 'POST';
     }
 
-    protected function render(string $template = null, array $variables = [])
+    protected function render(string $page = null, array $variables = [])
     {
-        $templatePath = 'public/views/'. $template.'.html';
+        $templatePath = 'public/views/'. $page .'.php';
         $output = 'File not found';
 
-        if(file_exists($templatePath)){
-            extract($variables);
+        if(file_exists($templatePath))
+        {
+            extract($variables,0);
 
             ob_start();
             include $templatePath;
