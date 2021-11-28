@@ -14,6 +14,16 @@
 <body>
 <div id="base-container">
     <nav class="nav-bar main-gradient">
+        <div class="hamburger-menu">
+            <i class="fas fa-bars fa-lg">
+                <ul>
+                    <li>Profile</li>
+                    <li>Explore</li>
+                    <li>Browse</li>
+                    <li>Search</li>
+                </ul>
+            </i>
+        </div>
         <div>
             <a href="login" class="nav-button">Explore</a>
             <a href="dashboard" class="nav-button">Browse</a>
@@ -23,7 +33,7 @@
             <input id="search-bar" type="text"></input>
 
             <a href="#" class="nav-button">
-                <i class="fas fa-search fa-lg" style="color: white;"></i>
+                <i class="fas fa-search fa-lg"></i>
             </a>
 
             <a href="login" class="nav-button">
