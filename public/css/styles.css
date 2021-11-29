@@ -34,13 +34,77 @@ a {
 
 }
 
-.nav-bar > div {
-    display: flex;
+.dropdown {
+    display: none;
 }
 
-.hamburger-menu
-{
-    display: none !important;
+.dropdown button {
+    background-color: none;
+    border: none;
+}
+
+.dropdown button:focus + ul {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.hamburger-menu {
+    display: none;
+
+    position: relative;
+
+    background-color: transparent;
+    font-size: 1.4em;
+
+    border: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+.hamburger-menu:focus {
+    border: none;
+    outline: none;
+
+}
+
+.hamburger-menu:hover {
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+}
+
+.hamburger-menu + ul {
+    position: absolute;
+
+    margin: 0;
+    padding: 1em;
+
+    list-style: none;
+
+    font-size: 0.8em;
+
+    opacity: 0;
+    pointer-events: none;
+
+    border-radius: 5px;
+    background-color: black;
+}
+
+.hamburger-menu a {
+    text-decoration: none;
+}
+
+.hamburger-menu i {
+    display: block !important;
+    color: white;
+    transition: 0.1s;
+}
+
+.hamburger-menu i:hover {
+    color: rgb(235, 235, 235);
+
 }
 
 .nav-button {
@@ -48,7 +112,7 @@ a {
     align-self: center;
 }
 
-#search-bar {
+.search-bar {
     height: 2.2em;
     width: 25em;
 
@@ -61,6 +125,7 @@ a {
 
 }
 
+
 #search-bar:focus {
     outline: salmon solid 0.2em;
 }
@@ -70,29 +135,21 @@ a {
 }
 
 @media screen and (max-width: 1000px) {
-  
-  
-  .nav-bar * {
-    display: none;
-  }
-  
-  .nav-bar > div {
-    display: flex;
-    flex-direction: column;
-  }
 
-  .hamburger-menu
-  {
-    display: flex !important;
-    
-    justify-content: center;
-  }
 
-  .hamburger-menu i
-  {
-      display: block !important;
-      color: white;
+    .left-side *, .right-side * {
+        display: none;
+    }
 
-  }
+    .nav-bar > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hamburger-menu {
+        display: flex !important;
+
+        justify-content: center;
+    }
 
 }

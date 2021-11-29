@@ -14,23 +14,26 @@
 <body>
 <div id="base-container">
     <nav class="nav-bar main-gradient">
-        <div class="hamburger-menu">
-            <i class="fas fa-bars fa-lg">
-                <ul>
-                    <li>Profile</li>
-                    <li>Explore</li>
-                    <li>Browse</li>
-                    <li>Search</li>
-                </ul>
-            </i>
+        <div class="dropdown">
+            <button class="hamburger-menu">
+                <i class="fas fa-bars fa-lg">
+                </i>
+            </button>
+            <ul>
+                <li><a href=#>Profile</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">Search</a></li>
+            </ul>
         </div>
-        <div>
+
+        <div class="left-side">
             <a href="login" class="nav-button">Explore</a>
             <a href="dashboard" class="nav-button">Browse</a>
             <a href="dashboard" class="nav-button">Contact</a>
         </div>
-        <div>
-            <input id="search-bar" type="text"></input>
+        <div class="right-side">
+            <input class="search-bar" type="text"></input>
 
             <a href="#" class="nav-button">
                 <i class="fas fa-search fa-lg"></i>
