@@ -34,7 +34,8 @@ a {
 
 }
 
-.dropdown {
+.dropdown
+{
     display: none;
 }
 
@@ -43,10 +44,77 @@ a {
     border: none;
 }
 
+.dropdown ul
+{
+    position: absolute;
+
+    left: 0;
+    width: 15em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 0;
+
+    list-style: none;
+
+    font-size: 0.8em;
+
+    opacity: 0;
+    pointer-events: none;
+
+    border-radius: 0 5px 5px 0;
+    background-color: white;
+
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+}
+
+.dropdown a
+{
+    width: 100%;
+    height: 100%;
+
+    padding: 1em 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #616161;
+    font-size: 1.3em;
+
+    transition: 0.2s ease;
+}
+
+.dropdown  a:last-child{
+    border-bottom-right-radius: 5px;
+}
+
+.dropdown  a:first-child{
+    border-top-right-radius: 5px;
+}
+
+.dropdown a:hover
+{
+    background-color: #f0f0f0;
+}
+
+
 .dropdown button:focus + ul {
     opacity: 1;
     pointer-events: all;
+    transform: translateY(0px);
 }
+
+.dropdown a:focus
+{
+    opacity: 1;
+    pointer-events: all;
+}
+
 
 .hamburger-menu {
     display: none;
@@ -75,29 +143,11 @@ a {
     cursor: pointer;
 }
 
-.hamburger-menu + ul {
-    position: absolute;
-
-    margin: 0;
-    padding: 1em;
-
-    list-style: none;
-
-    font-size: 0.8em;
-
-    opacity: 0;
-    pointer-events: none;
-
-    border-radius: 5px;
-    background-color: black;
-}
-
 .hamburger-menu a {
     text-decoration: none;
 }
 
 .hamburger-menu i {
-    display: block !important;
     color: white;
     transition: 0.1s;
 }
@@ -125,8 +175,23 @@ a {
 
 }
 
+.mobile-search-bar
+{
+    display: none;
 
-#search-bar:focus {
+    height: 2.2em;
+    width: 70%;
+
+    padding: 0em 1em;
+    margin: 0em 0em 0em 3em;
+
+    border-radius: 2em;
+    font-weight: normal;
+    border-style: none;
+}
+
+
+.search-bar:focus {
     outline: salmon solid 0.2em;
 }
 
@@ -136,20 +201,24 @@ a {
 
 @media screen and (max-width: 1000px) {
 
+    .dropdown
+    {
+        display: block;
+    }
 
     .left-side *, .right-side * {
         display: none;
-    }
-
-    .nav-bar > div {
-        display: flex;
-        flex-direction: column;
     }
 
     .hamburger-menu {
         display: flex !important;
 
         justify-content: center;
+    }
+
+    .mobile-search-bar
+    {
+        display: block;
     }
 
 }

@@ -12,17 +12,30 @@
 </head>
 
 <body>
-    <nav class="nav-bar main-gradient">
-        <div>
+<nav class="nav-bar main-gradient">
+        <div class="dropdown">
+            <button class="hamburger-menu">
+                <i class="fas fa-bars fa-lg">
+                </i>
+            </button>
+            <ul>
+                <a href="#"><li>Profile</li></a>
+                <a href="#"><li>Explore</li></a>
+                <a href="#"><li>Browse</li></a>
+            </ul>
+        </div>
+        <input class="mobile-search-bar" type="text"></input>
+
+        <div class="left-side">
             <a href="login" class="nav-button">Explore</a>
             <a href="dashboard" class="nav-button">Browse</a>
             <a href="dashboard" class="nav-button">Contact</a>
         </div>
-        <div>
-            <input id="search-bar" type="text"></input>
+        <div class="right-side">
+            <input class="search-bar" type="text"></input>
 
             <a href="#" class="nav-button">
-                <i class="fas fa-search fa-lg" style="color: white;"></i>
+                <i class="fas fa-search fa-lg"></i>
             </a>
 
             <a href="login" class="nav-button">

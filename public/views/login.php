@@ -20,12 +20,12 @@
                 </i>
             </button>
             <ul>
-                <li><a href=#>Profile</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="#">Browse</a></li>
-                <li><a href="#">Search</a></li>
+                <a href="#"><li>Profile</li></a>
+                <a href="#"><li>Explore</li></a>
+                <a href="#"><li>Browse</li></a>
             </ul>
         </div>
+        <input class="mobile-search-bar" type="text"></input>
 
         <div class="left-side">
             <a href="login" class="nav-button">Explore</a>
