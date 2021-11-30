@@ -58,12 +58,6 @@ p
     margin: 2em 1em;
 }
 
-
-
-
-
-
-
 .button-75 {
     align-items: center;
     background-image: linear-gradient(#F94851, #FD7A49);
@@ -134,4 +128,26 @@ p
     }
 
     
+  }
+
+  @media screen and (max-width: 444px)
+  {
+    .button-row
+    {
+      flex-direction: column;
+      align-items: center;
+
+      justify-content: space-around;
+    }
+
+    .button-75
+    {
+      margin: 0.5em;
+    }
+
+    .content-wrapper img
+    {
+      width: 90%;
+    } 
+
   }

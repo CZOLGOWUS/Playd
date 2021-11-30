@@ -48,7 +48,7 @@
         <div class="content-wrapper">
             <img src="public/img/logo.svg" alt="logo" class="svg-theme-color">
             <p>
-                TProvident ut non iste modi molestias. Aliquid ducimus facere tenetur reprehenderit est optio suscipit. 
+                Provident ut non iste modi molestias. Aliquid ducimus facere tenetur reprehenderit est optio suscipit. 
                 Est qui et sit. Sed rerum repudiandae qui ipsa sint earum.
             </p>
             <div class="button-row">
