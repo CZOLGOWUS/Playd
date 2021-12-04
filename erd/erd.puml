@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+entity Users
+{
+    * id_user : primary_key, int, autoincrement
+    email : varchar
+    username : varchar, unique
+    password : varchar
+}
+
+entity Access_rights
+{
+    * id_access_rights : primary_key, int
+
+}
+
+entity User_Authentication
+{
+    * id_user : primary_key, int
+    * id_access_rights : primary_key, int
+}
+
+entity Games
+{
+    * id_game : primary_key,int,autoincrement
+    title : varchar, unique
+    desc : text
+
+}
+
+entity Attributes
+{
+    * id_attributes : primary_key , int, autoincrement
+    name : varchar, unique
+}
+
+
+
+
+
+
+@enduml

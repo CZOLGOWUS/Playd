@@ -15,9 +15,19 @@ class DefaultController extends AppController
         $this->render('login');
     }
 
-    public function dashboard()
+    public function explore()
     {
-        $this->render('dashboard');
+        $this->render('Explore');
+    }
+
+    public function welcomePrefSurvey()
+    {
+        $this->render("welcomePrefSurvey");
+    }
+
+    public function addGame()
+    {
+        $this->render("addGame");
     }
 
 }

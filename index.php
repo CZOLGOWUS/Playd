@@ -7,8 +7,13 @@ $path = parse_url( $path, PHP_URL_PATH);
 
 Router::get('', 'DefaultController');
 Router::get('indexPage', 'DefaultController');
-Router::get('login', 'SecurityController');
-Router::post('dashboard', 'DefaultController');
+Router::get('explore', 'DefaultController');
+Router::get('welcomePrefSurvey', 'DefaultController');
+
+Router::post('login', 'SecurityController');
+
+Router::post('addGame', 'GamePageController');
+Router::get('gamePage', 'GamePageController');
 
 
 Router::run($path);

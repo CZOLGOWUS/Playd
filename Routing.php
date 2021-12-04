@@ -2,6 +2,7 @@
 
 require_once 'src/controlles/DefaultController.php';
 require_once 'src/controlles/SecurityController.php';
+require_once 'src/controlles/GamePageController.php';
 
 class Router {
 
