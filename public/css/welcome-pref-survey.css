@@ -33,45 +33,94 @@ body {
 
 .ratings-container {
     width: 90%;
-    height: 500px;
 
     margin: 1% 0;
 
-    display: grid;
-    
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 
     background-color: hotpink;
 }
 
 .rating-container
 {
-    background-color: lightgray;
 
+    display: flex;
 
+    flex-direction: column;
 
+    justify-content: space-between;
+    align-items: center;
+
+    width: 28%;
+    height: 13%;
     padding: 0.5em 1em;
     margin: 0.5em 1em;
+
+    background-color: lightgray;
 }
 
 .attribute
 {
-    height: 1em;
-    width: 5em;
+    height: 1.8em;
+    width: 8em;
+
+    margin: 0;
+
 
     background-color: lightsalmon;
 }
 
-.grade-container
+.grades-container
 {
+    width: 100%;
 
+    margin: 0;
+
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
 }
 
 .grade
 {
+    width: 1.5em;
+    height: 1.5em;
+
+    margin: 0;
+    border-radius: 50%;
+
+    background-color: white;
 
 }
 
-@media screen and (max-device-width:411px), screen and (max-device-width:411px) {
+.footer
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer > i
+{
+    margin: 0.2em 0.3em;
+}
+
+
+@media screen and (max-device-width:1337px) {
+    .rating-container
+    {
+        width: 40%;
+    }
+}
+
+@media screen and (max-device-width:660px) {
+
+}
+
+@media screen and (max-device-width:411px) {
     body {
         flex-direction: column;
     }
@@ -86,7 +135,7 @@ body {
 }
 
 
-@media screen and (max-device-width:411px), screen and (max-device-width:411px) {
+@media screen and (max-device-width:411px) {
     body {
         flex-direction: column;
     }

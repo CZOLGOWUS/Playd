@@ -46,7 +46,7 @@
 
     <main id="content-container">
         <div class="content-wrapper">
-            <img src="public/img/logo.svg" alt="logo" class="svg-theme-color">
+            <img src="public/img/logo.png" alt="logo" class="svg-theme-color">
             <p>
                 Provident ut non iste modi molestias. Aliquid ducimus facere tenetur reprehenderit est optio suscipit. 
                 Est qui et sit. Sed rerum repudiandae qui ipsa sint earum.

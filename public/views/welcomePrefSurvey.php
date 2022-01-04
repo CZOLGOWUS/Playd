@@ -53,11 +53,14 @@
         </nav>
 
         <main class="base-container">
-            <img src="public/img/logo.svg" class="logo-container" alt="">
+            <img src="public/img/logo.png" class="logo-container" alt="">
             <div class="instruction-container">
 
             </div>
             <div class="ratings-container">
+            <?php
+            for ($i =0;$i<=11;$i++):
+            ?>
                 <div class="rating-container">
                     <div class="attribute">
 
@@ -98,7 +101,16 @@
                         </div>
                     </div>
                 </div>
+
+            <?php endfor; ?>
             </div>
+
+                <div class="footer">
+                    <i class="fas fa-caret-down fa-2x"></i>
+                    <i class="fas fa-chevron-right fa-2x"></i>
+                </div>
+            </div>
+
         </main>
     </div>
 
