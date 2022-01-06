@@ -13,109 +13,79 @@
 
 <body>
 
-    <div id="base-container">
-        <nav class="nav-bar main-gradient">
-            <div class="dropdown">
-                <button class="hamburger-menu">
-                    <i class="fas fa-bars fa-lg">
-                    </i>
-                </button>
-                <ul>
-                    <a href="#">
-                        <li>Profile</li>
-                    </a>
-                    <a href="#">
-                        <li>Explore</li>
-                    </a>
-                    <a href="#">
-                        <li>Browse</li>
-                    </a>
-                </ul>
-            </div>
-            <input class="mobile-search-bar" type="text"></input>
-
-            <div class="left-side">
-                <a href="login" class="nav-button">Explore</a>
-                <a href="dashboard" class="nav-button">Browse</a>
-                <a href="dashboard" class="nav-button">Contact</a>
-            </div>
-            <div class="right-side">
-                <input class="search-bar" type="text"></input>
-
-                <a href="#" class="nav-button">
-                    <i class="fas fa-search fa-lg"></i>
+<div id="base-container">
+    <nav class="nav-bar main-gradient">
+        <div class="dropdown">
+            <button class="hamburger-menu">
+                <i class="fas fa-bars fa-lg">
+                </i>
+            </button>
+            <ul>
+                <a href="#">
+                    <li>Profile</li>
                 </a>
-
-                <a href="login" class="nav-button">
-                    <i class="fas fa-user-alt fa-lg"></i>
+                <a href="#">
+                    <li>Explore</li>
                 </a>
-            </div>
-        </nav>
+                <a href="#">
+                    <li>Browse</li>
+                </a>
+            </ul>
+        </div>
+        <input class="mobile-search-bar" type="text"></input>
 
-        <main class="base-container">
-            <img src="public/img/logo.png" class="logo-container" alt="">
-            <div class="instruction-container">
+        <div class="left-side">
+            <a href="login" class="nav-button">Explore</a>
+            <a href="dashboard" class="nav-button">Browse</a>
+            <a href="dashboard" class="nav-button">Contact</a>
+        </div>
+        <div class="right-side">
+            <input class="search-bar" type="text"></input>
 
-            </div>
-            <div class="ratings-container">
-            <?php
-            for ($i =0;$i<=11;$i++):
-            ?>
-                <div class="rating-container">
-                    <div class="attribute">
+            <a href="#" class="nav-button">
+                <i class="fas fa-search fa-lg"></i>
+            </a>
 
-                    </div>
-                    <div class="grades-container">
-                        <div class="grade">
+            <a href="login" class="nav-button">
+                <i class="fas fa-user-alt fa-lg"></i>
+            </a>
+        </div>
+    </nav>
 
+    <main class="base-container">
+        <img src="public/img/logo.png" class="logo-container" alt="">
+        <div class="instruction-container">
+
+        </div>
+            <class class="ratings-container">
+                <?php
+                for ($i = 0; $i <= 11; $i++):
+                    ?>
+                    <form class="rating-container">
+                        <div class="attribute">
+                            <p>place holder attribute</p>
                         </div>
-                        <div class="grade">
-
+                        <div class="grades-container">
+                            <?php for ($j = 0; $j <= 10; $j++):?>
+                            <input label="<?php echo $j ?>" type="radio" name="<?php echo $i ?>" value="<?php echo $j ?>">
+                            <?php endfor; ?>
                         </div>
-                        <div class="grade">
+                    </form>
 
-                        </div>
-                        <div class="grade">
+                <?php endfor; ?>
+            </class>
 
-                        </div>
-                        <div class="grade">
+        <div class="footer">
+            <i class="fas fa-caret-down fa-2x"></i>
+            <i class="fas fa-chevron-right fa-2x"></i>
+        </div>
+</div>
 
-                        </div>
-                        <div class="grade">
-
-                        </div>
-                        <div class="grade">
-
-                        </div>
-                        <div class="grade">
-
-                        </div>
-                        <div class="grade">
-
-                        </div>
-                        <div class="grade">
-
-                        </div>
-                        <div class="grade">
-
-                        </div>
-                    </div>
-                </div>
-
-            <?php endfor; ?>
-            </div>
-
-                <div class="footer">
-                    <i class="fas fa-caret-down fa-2x"></i>
-                    <i class="fas fa-chevron-right fa-2x"></i>
-                </div>
-            </div>
-
-        </main>
-    </div>
+</main>
+</div>
 
 
-    <figure>
+<figure>
 </body>
 
 </html>
