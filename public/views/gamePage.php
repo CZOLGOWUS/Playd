@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/49313450ad.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="public/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="public/css/addGameStyles.css">
+    <link rel="stylesheet" type="text/css" href="public/css/gamePageStyles.css">
     <title>Welcome</title>
 </head>
 

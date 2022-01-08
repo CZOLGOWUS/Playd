@@ -2,9 +2,13 @@
 
 class Game
 {
+    private static array $allAttributes = ["heavy atmosphere","light atmosphere","challenging","casual"];
+
     private $title;
     private $description;
     private $image;
+    private $attributes;
+
 
     public function __construct($title, $description, $image)
     {
@@ -13,6 +17,7 @@ class Game
         $this->image = $image;
     }
 
+    //region geters_setters
     public function getTitle()
     {
         return $this->title;
@@ -47,4 +52,34 @@ class Game
     {
         $this->image = $image;
     }
+
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+
+    public function setAttributes($attributes): void
+    {
+        $this->attributes = $attributes;
+    }
+
+    public static function getAllAttributes():array
+    {
+        return self::$allAttributes;
+    }
+
+    //endregion
+
+    public static function addNewAttribute(string $attribute)
+    {
+        if (!isset(self::$allAttributes[$attribute])) {
+            self::$allAttributes[] = $attribute;
+        }
+    }
+
+
+
+
+
 }

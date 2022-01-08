@@ -10,19 +10,9 @@ class DefaultController extends AppController
         $this->render('indexPage');
     }
 
-    public function login()
+    public function preferencesSurvey()
     {
-        $this->render('login');
-    }
-
-    public function explore()
-    {
-        $this->render('Explore');
-    }
-
-    public function welcomePrefSurvey()
-    {
-        $this->render("welcomePrefSurvey");
+        $this->render("preferencesSurvey");
     }
 
     public function addGame()

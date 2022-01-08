@@ -1,11 +1,13 @@
 <?php
 
+require_once "Game.php";
+
 class User
 {
     private $username;
     private $email;
     private $password;
-
+    private array $preferences = [];
 
     public function __construct(string $username,string $email,string $password)
     {
@@ -45,5 +47,14 @@ class User
     }
 
 
+    public function addPreference(string $attribute,int $score )
+    {
+        if(!isset(Game::getAllAttributes()[$attribute]))
+        {
+            Game::addNewAttribute($attribute);
+        }
+
+        $preferences[$attribute] = $score;
+    }
 
 }

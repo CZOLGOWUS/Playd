@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/49313450ad.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="public/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="public/css/welcome-pref-survey.css">
+    <link rel="stylesheet" type="text/css" href="public/css/preferences-survey.css">
     <title>Welcome</title>
 </head>
 
@@ -57,28 +57,32 @@
         <div class="instruction-container">
 
         </div>
-            <class class="ratings-container">
+        <form action="explore"  method="get"  >
+            <div class="ratings-container">
                 <?php
                 for ($i = 0; $i <= 11; $i++):
+                    $nextAttribute = Game::getAllAttributes()[array_rand(Game::getAllAttributes())];
                     ?>
-                    <form class="rating-container">
+                    <div class="rating-container">
                         <div class="attribute">
-                            <p>place holder attribute</p>
+                            <p><?php echo $nextAttribute; ?></p>
                         </div>
                         <div class="grades-container">
                             <?php for ($j = 0; $j <= 10; $j++):?>
                             <input label="<?php echo $j ?>" type="radio" name="<?php echo $i ?>" value="<?php echo $j ?>">
                             <?php endfor; ?>
                         </div>
-                    </form>
+                    </div>
 
                 <?php endfor; ?>
-            </class>
+            </div>
 
-        <div class="footer">
-            <i class="fas fa-caret-down fa-2x"></i>
-            <i class="fas fa-chevron-right fa-2x"></i>
-        </div>
+            <div class="footer">
+                <button><i class="fas fa-caret-down fa-3x"></i></button>
+                <button class="submit-button"><i class="fas fa-chevron-right fa-3x"></i></button>
+
+            </div>
+        </form>
 </div>
 
 </main>

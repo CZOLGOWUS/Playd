@@ -1,17 +1,24 @@
-body {
+
+body
+{
     background-color: #EBECED;
+    width: 100%;
+
     margin: 0;
+    padding: 0;
 
     font-family: Arial, Helvetica, sans-serif;
 
 }
 
-a {
+a
+{
     color: #fff;
     text-decoration: none;
 }
 
-.nav-bar {
+.nav-bar
+{
     position: static;
     top: 0;
 
@@ -36,7 +43,8 @@ a {
     display: none;
 }
 
-.dropdown button {
+.dropdown button
+{
     background-color: none;
     border: none;
 }
@@ -86,11 +94,13 @@ a {
     transition: 0.2s ease;
 }
 
-.dropdown  a:last-child{
+.dropdown a:last-child
+{
     border-bottom-right-radius: 5px;
 }
 
-.dropdown  a:first-child{
+.dropdown a:first-child
+{
     border-top-right-radius: 5px;
 }
 
@@ -100,7 +110,8 @@ a {
 }
 
 
-.dropdown button:focus + ul {
+.dropdown button:focus + ul
+{
     opacity: 1;
     pointer-events: all;
     transform: translateY(0px);
@@ -113,7 +124,8 @@ a {
 }
 
 
-.hamburger-menu {
+.hamburger-menu
+{
     display: none;
 
     position: relative;
@@ -127,39 +139,46 @@ a {
     padding: 0;
 }
 
-.hamburger-menu:focus {
+.hamburger-menu:focus
+{
     border: none;
     outline: none;
 
 }
 
-.hamburger-menu:hover {
+.hamburger-menu:hover
+{
     border: none;
     outline: none;
 
     cursor: pointer;
 }
 
-.hamburger-menu a {
+.hamburger-menu a
+{
     text-decoration: none;
 }
 
-.hamburger-menu i {
+.hamburger-menu i
+{
     color: white;
     transition: 0.1s;
 }
 
-.hamburger-menu i:hover {
+.hamburger-menu i:hover
+{
     color: rgb(235, 235, 235);
 
 }
 
-.nav-button {
+.nav-button
+{
     padding: 0em 1em 0em 1em;
     align-self: center;
 }
 
-.search-bar {
+.search-bar
+{
     height: 2.2em;
     width: 25em;
 
@@ -188,26 +207,31 @@ a {
 }
 
 
-.search-bar:focus {
+.search-bar:focus
+{
     outline: salmon solid 0.2em;
 }
 
-.main-gradient {
+.main-gradient
+{
     background-image: linear-gradient(to bottom, #F94851, #FD7A49);
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px)
+{
 
     .dropdown
     {
         display: block;
     }
 
-    .left-side *, .right-side * {
+    .left-side *, .right-side *
+    {
         display: none;
     }
 
-    .hamburger-menu {
+    .hamburger-menu
+    {
         display: flex !important;
 
         justify-content: center;

@@ -10,24 +10,27 @@ class SecurityController extends AppController
         $user = new User('user0','email0@email.com','pass0');
 
         if (!$this->isPost()) {
-            return $this->render('login');
+            $this->render('login');
+            return;
         }
 
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         if ($user->getEmail() !== $email) {
-            return $this->render('login', ['messages' => ['User with this email not exist!']]);
+            $this->render('login', ['messages' => ['User with this email not exist!']]);
+            return;
         }
 
         if ($user->getPassword() !== $password) {
-            return $this->render('login', ['messages' => ['Wrong password!']]);
+            $this->render('login', ['messages' => ['Wrong password!']]);
+            return;
         }
 
         $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/welcomePrefSurvey");
+        header("Location: {$url}/preferencesSurvey");
 
-        //return $this->render('WelcomePrefSurvey');
+        //return $this->render('preferencesSurvey');
 
     }
 }
