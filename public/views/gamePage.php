@@ -45,13 +45,67 @@
     </nav>
 
     <main class="content-container">
-        <div class="content-wrapper">
 
-            <h1>Game Page</h1>
-            <img src="/public/uploads/<?= $game->getImage() ?>">
-            <h2><?= $game->getTitle() ?></h2>
-            <h3><?= $game->getDescription() ?></h3>
-        </div>
+            <div class="main-game-info">
+
+                <div class="game-photos">
+                    <div class="photo-frame">
+                        <div class="photo-selected">
+                        
+                        </div>
+                    </div>
+                    <div class="photo-gallery">
+                        <?php for ($x=0;$x<5;$x++): ?>
+                            <div class="photo-in-gallery">
+                            
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+                    <div class="socials-scores">
+                        <div class="social-icons">
+                            <div class="social-icon">
+                            
+                            </div>
+                            <div class="social-icon">
+
+                            </div>
+                        </div>
+                        <div class="score-icons">
+                            <div class="score-icon">
+                            
+                            </div>
+                            <div class="review-score">
+                                <p>5.6</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-description">
+                
+                </div>
+                
+            </div>
+            
+            <div class="more-game-info">
+                <div class="reviews-wrapper">
+                
+                </div>
+                <div class="important-info-wrapper">
+                
+                </div>
+            </div>
+            
+            
+<!--            <h1>Game Page</h1>-->
+<!--            --><?php //if(isset($game)) : ?>
+<!--                <img src="/public/uploads/--><?php //$game->getImage() ?><!--">-->
+<!--                <h2>--><?//= $game->getTitle() ?><!--</h2>-->
+<!--                <h3>--><?//= $game->getDescription() ?><!--</h3>-->
+<!--            --><?php //else : ?>
+<!--                <p>could not load game page<p>-->
+<!--            --><?php //endif; ?>
+    
     </main>
 </body>
 

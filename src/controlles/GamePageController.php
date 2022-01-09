@@ -10,7 +10,7 @@ class GamePageController extends AppController
     const UPLOAD_DIRECTORY = "/../public/uploads/";
 
     private $messages = [];
-    private $game;
+    public $game;
 
     public function addGame()
     {
@@ -52,8 +52,8 @@ class GamePageController extends AppController
 
     public function gamePage()
     {
-        $game = new Game($_POST['title'],$_POST['description'],$_FILES['file']['name']);
-        $this->render("gamePage");
+        $game = new Game("title","desc","521516.jpg");
+        $this->render("gamePage",['game'=>$game]);
     }
 
 }

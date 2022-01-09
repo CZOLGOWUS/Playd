@@ -1,19 +1,173 @@
+body,head
+{
+    height: 100vh;
+}
+
 .content-container
 {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+
+    background-color: #FFAAAE;
 }
 
-.content-wrapper
-{
-
-}
 
 .main-game-info
 {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+    padding: 1em 0;
+
+    background-color: #c2b15c;
+}
+
+.game-photos
+{
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 65%;
+    height: 40em;
+
+    padding: 1%;
+
+    background-color: #616161;
+}
+
+.photo-frame
+{
+    width: 100%;
+    height: 70%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5px;
+
+    background-color: #bbc1ff;
+}
+
+.photo-selected
+{
+    width: 98%;
+    height: 98%;
+
+    margin: 0 ;
+
+    background-color: #F94851;
+}
+
+.photo-gallery
+{
+    display: flex;
+
+    width: 100%;
+    height: 20%;
+
+
+    border-radius: 5px;
+
+    background-color: #FD7A49;
+
+
+}
+
+.photo-in-gallery
+{
+    width: 25%;
+
+    margin: 0.5em;
+
+    background-color: aqua;
+}
+
+.socials-scores
+{
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.social-icons
+{
+    display: flex;
+}
+
+.social-icon
+{
+    width: 3em;
+    height: 3em;
+
+    margin-right: 1em;
+
+
+    background-color: white;
+}
+
+.score-icons
+{
+    display: flex;
+}
+
+.score-icon
+{
+    width: 3em;
+    height: 3em;
+
+    margin-left: 1em;
+
+    background-color: #f34079;
+}
+
+.review-score
+{
+    text-align: center;
+    margin-left: 0.2em;
+}
+
+.game-description
+{
+    display: flex;
+
+    width: 25%;
+    height: 40em;
+
+    background-color: #7b6a6a;
 }
 
 .more-game-info
 {
+    padding: 1em 0;
 
+    display: flex;
+    justify-content: space-around;
+}
+
+.reviews-wrapper
+{
+    width: 65%;
+    height: 30em;
+    background-color: #f34079;
+}
+
+.important-info-wrapper
+{
+    width: 25%;
+    height: 25em;
+    background-color: #fc894d;
 }

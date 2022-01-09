@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/49313450ad.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="public/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="public/css/Explore.css">
+    <link rel="stylesheet" type="text/css" href="public/css/exploreStyle.css">
     <title>Welcome</title>
 </head>
 
@@ -53,13 +53,7 @@
 <main id="content-container">
     <div class="content-wrapper">
 
-        <div class="main-game-info">
-        
-        </div>
 
-        <div class="more-game-info">
-
-        </div>
 
     </div>
 </main>

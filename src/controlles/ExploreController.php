@@ -10,7 +10,6 @@ class ExploreController extends AppController
 
     public function explore()
     {
-
         $this->render('explore');
     }
 
