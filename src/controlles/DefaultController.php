@@ -20,4 +20,9 @@ class DefaultController extends AppController
         $this->render("addGame");
     }
 
+    public function contact()
+    {
+        $this->render("contact");
+    }
+    
 }

@@ -27,9 +27,8 @@
         <input class="mobile-search-bar" type="text"></input>
 
         <div class="left-side">
-            <a href="login" class="nav-button">Explore</a>
-            <a href="dashboard" class="nav-button">Browse</a>
-            <a href="dashboard" class="nav-button">Contact</a>
+            <a href="explore" class="nav-button">Explore</a>
+            <a href="explore" class="nav-button">Contact</a>
         </div>
         <div class="right-side">
             <input class="search-bar" type="text"></input>

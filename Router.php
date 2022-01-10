@@ -4,6 +4,8 @@ require_once 'src/controlles/DefaultController.php';
 require_once 'src/controlles/SecurityController.php';
 require_once 'src/controlles/GamePageController.php';
 require_once 'src/controlles/ExploreController.php';
+require_once 'src/controlles/ProfileController.php';
+
 
 class Router {
 
