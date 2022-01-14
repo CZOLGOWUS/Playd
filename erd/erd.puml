@@ -9,31 +9,79 @@ entity Users
     password : varchar
 }
 
-entity Access_rights
+entity User_attributes
 {
-    * id_access_rights : primary_key, int
-
+    * id_user_attribute : <<PK>> int
+    ..
+    * id_game_attribute : <<FK>> int
+    --
+    score : int (constraint 0-10)
 }
 
-entity User_Authentication
-{
-    * id_user : primary_key, int
-    * id_access_rights : primary_key, int
-}
 
 entity Games
 {
     * id_game : primary_key,int,autoincrement
+    ..
+    * id_user : <<FK>> unsigned int
+    --
     title : varchar, unique
     desc : text
+    image : blob
 
 }
 
-entity Attributes
+
+
+
+entity Users_Games
 {
-    * id_attributes : primary_key , int, autoincrement
+    * id_user_game : <<PK>>, int, autoincrement
+    ..
+    * id_user : <<FK>>, int
+    * id_game : <<FK>>, int
+    --
+}
+
+Users ||--o{ Users_Games
+Games ||--o{ Users_Games
+
+
+
+
+entity Game_attributes
+{
+    * id_attribute : primary_key , int, autoincrement
     name : varchar, unique
 }
+
+Games ||--o{ Game_attributes
+
+
+
+entity Access_rights
+{
+    * id_access_right : primary_key int autoincrement
+    --
+    access_right : varchar
+}
+
+
+
+entity Users_Access_rights
+{
+    * id_user_access_right : <<PK>> int autoincrement
+    ..
+    * id_user : <<FK>> int
+    * id_access_right : <<FK>> int
+    --
+}
+
+Users ||--o{ Users_Access_rights
+Access_rights ||--o{ Users_Access_rights
+
+
+
 
 
 

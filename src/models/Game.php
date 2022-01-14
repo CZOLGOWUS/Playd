@@ -8,13 +8,14 @@ class Game
     private $description;
     private $image;
     private $attributes;
+    private $steamUserScore;
 
 
     public function __construct($title, $description, $image)
     {
         $this->title = $title;
         $this->description = $description;
-        $this->image = $image;
+        $this->image = ["0" => $image];
     }
 
     //region geters_setters
@@ -42,33 +43,63 @@ class Game
     }
 
 
-    public function getImage() :string
+    public function getImages() : array
     {
         return $this->image;
     }
+    
+    public function getImage(int $index) : string
+    {
+        return $this->image[$index];
+    }
 
-
-    public function setImage(string $image): void
+/*
+ * array of strings of names from the database images
+ * */
+    public function setAllImages(array $image): void
     {
         $this->image = $image;
     }
 
+    public function addImage(string $image)
+    {
+        $this->image[] = $image;
+    }
+    
     public function getAttributes()
     {
         return $this->attributes;
     }
 
 
-    public function setAttributes($attributes): void
+    public function setAllAttributes($attributes): void
     {
         $this->attributes = $attributes;
     }
-
+    
     public static function getAllAttributes():array
     {
         return self::$allAttributes;
     }
+    
+    /*
+     * from 0 to 100 percent
+     * */
+    public function getSteamUserScore():int
+    {
+        return $this->steamUserScore;
+    }
+    
+    /*
+     * from 0 to 100 percent
+     * */
+    public function setSteamUserScore(int $score) : void
+    {
+        $this->steamUserScore = $score;
+    }
+    
 
+    
     //endregion
 
     public static function addNewAttribute(string $attribute)
@@ -77,9 +108,7 @@ class Game
             self::$allAttributes[] = $attribute;
         }
     }
-
-
-
+    
 
 
 }

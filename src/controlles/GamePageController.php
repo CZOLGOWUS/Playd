@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Game.php';
+require_once __DIR__.'/../repository/GameRepository.php';
 
 class GamePageController extends AppController
 {
@@ -10,8 +11,15 @@ class GamePageController extends AppController
     const UPLOAD_DIRECTORY = "/../public/uploads/";
 
     private $messages = [];
-    public $game;
-
+    private $gameRepository;
+    
+    public function __construct()
+    {
+        parent::__construct();
+        $this->gameRepository = new GameRepository();
+    }
+    
+    
     public function addGame()
     {
         if($this->isPost() &&
@@ -25,7 +33,9 @@ class GamePageController extends AppController
             );
 
             $game = new Game($_POST['title'],$_POST['description'],$_FILES['file']['name']);
-
+            $this->gameRepository->addGame($game);
+            
+            
             $this->render("gamePage", ["messages" => $this->messages,'game'=>$game]);
             return;
         }

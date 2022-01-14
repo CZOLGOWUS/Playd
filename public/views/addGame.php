@@ -55,7 +55,7 @@
                     }
                 }
                 ?>
-                <input type="text">
+                <input type="text" name="title">
                 <textarea name="description" rows="5" placeholder="description"></textarea>
                 <input type="file" name="file" >
                 <button type="submit">upload</button>
