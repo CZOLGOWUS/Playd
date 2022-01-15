@@ -4,7 +4,7 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/Game.php';
 require_once __DIR__.'/../repository/GameRepository.php';
 
-class GamePageController extends AppController
+class GameController extends AppController
 {
     const MAX_FILE_SIZE = 1024*1024;
     const SUPORTED_TYPES = ['image/png','image/jpg'];
@@ -40,7 +40,10 @@ class GamePageController extends AppController
             return;
         }
 
-        $this->render("addGame",["messages" => $this->messages]);
+        $this->render("addGame",[
+            'games' => $this->gameRepository->getGames(),
+            "messages" => $this->messages
+        ]);
     }
 
     private function validate(array $file) : bool
@@ -60,10 +63,11 @@ class GamePageController extends AppController
         return true;
     }
 
-    public function gamePage()
+    public function gamePage() : void
     {
-        $game = new Game("title","desc","521516.jpg");
-        $this->render("gamePage",['game'=>$game]);
+        $game = $this->gameRepository->getGameById(7);
+        
+        $this->render("gamePage",['game' => $game]);
     }
 
 }

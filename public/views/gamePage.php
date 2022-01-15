@@ -21,15 +21,13 @@
             <ul>
                 <a href="#"><li>Profile</li></a>
                 <a href="#"><li>Explore</li></a>
-                <a href="#"><li>Browse</li></a>
             </ul>
         </div>
         <input class="mobile-search-bar" type="text"></input>
 
         <div class="left-side">
-            <a href="login" class="nav-button">Explore</a>
-            <a href="dashboard" class="nav-button">Browse</a>
-            <a href="dashboard" class="nav-button">Contact</a>
+            <a href="explore" class="nav-button">Explore</a>
+            <a href="contact" class="nav-button">Contact</a>
         </div>
         <div class="right-side">
             <input class="search-bar" type="text"></input>
@@ -45,19 +43,20 @@
     </nav>
 
     <main class="content-container">
-
+        
             <div class="main-game-info">
-
                 <div class="game-photos">
                     <div class="photo-frame">
                         <div class="photo-selected">
-                        
+                            <img src="public/uploads/<?php echo $game->getImage(0); ?>" >
                         </div>
                     </div>
                     <div class="photo-gallery">
-                        <?php for ($x=0;$x<5;$x++): ?>
+                        <?php
+                            $imageCount = count($game->getAllImages());
+                            for ($i=1;$i < $imageCount && $i < 5;$i++): ?>
                             <div class="photo-in-gallery">
-                            
+                                <img src="public/uploads/<?php echo $game->getImage($i); ?>">
                             </div>
                         <?php endfor; ?>
                     </div>

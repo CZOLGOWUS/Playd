@@ -13,12 +13,14 @@ Router::get('contact', 'DefaultController');
 
 Router::post('login', 'SecurityController');
 
-Router::post('addGame', 'GamePageController');
-Router::get('gamePage', 'GamePageController');
+Router::post('addGame', 'GameController');
+Router::get('gamePage', 'GameController');
 
 Router::get('explore','ExploreController');
 
 Router::get('profile','ProfileController');
+
+Router::get('register','RegistrationController');
 
 
 Router::run($path);

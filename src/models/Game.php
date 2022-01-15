@@ -6,16 +6,15 @@ class Game
 
     private $title;
     private $description;
-    private $image;
+    private $images = [];
     private $attributes;
     private $steamUserScore;
 
 
-    public function __construct($title, $description, $image)
+    public function __construct($title, $description)
     {
         $this->title = $title;
         $this->description = $description;
-        $this->image = ["0" => $image];
     }
 
     //region geters_setters
@@ -43,27 +42,27 @@ class Game
     }
 
 
-    public function getImages() : array
+    public function getAllImages() : array
     {
-        return $this->image;
+        return $this->images;
     }
     
     public function getImage(int $index) : string
     {
-        return $this->image[$index];
+        return $this->images[$index];
     }
 
 /*
  * array of strings of names from the database images
  * */
-    public function setAllImages(array $image): void
+    public function setAllImages(array $images): void
     {
-        $this->image = $image;
+        $this->images = $images;
     }
 
-    public function addImage(string $image)
+    public function addImage(string $image) : void
     {
-        $this->image[] = $image;
+        $this->images[] = $image;
     }
     
     public function getAttributes()
