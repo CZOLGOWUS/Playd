@@ -22,5 +22,7 @@ Router::get('profile','ProfileController');
 
 Router::get('register','RegistrationController');
 
+Router::post('registerComplete','RegistrationCompletionController');
+
 
 Router::run($path);

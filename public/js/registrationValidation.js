@@ -10,7 +10,7 @@ function isEmail(email)
 
 function arePasswordsSame(password,ConfirmationPassword)
 {
-    return password == confirmedPasswordInput;
+    return password === ConfirmationPassword;
 }
 
 function markValidation(element, condition)
@@ -30,7 +30,6 @@ function validateEmail()
 }
 
 emailInput.addEventListener('keyup',validateEmail);
-
 
 
 

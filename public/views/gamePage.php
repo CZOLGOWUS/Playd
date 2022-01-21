@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/49313450ad.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="public/css/styles.css">
     <link rel="stylesheet" type="text/css" href="public/css/gamePageStyles.css">
+    <script type="text/javascript" src="./public/js/gameImageSelector.js" defer></script>
     <title>Welcome</title>
 </head>
 
@@ -54,7 +55,7 @@
                     <div class="photo-gallery">
                         <?php
                             $imageCount = count($game->getAllImages());
-                            for ($i=1;$i < $imageCount && $i < 5;$i++): ?>
+                            for ($i=0;$i < $imageCount && $i < 5;$i++): ?>
                             <div class="photo-in-gallery">
                                 <img src="public/uploads/<?php echo $game->getImage($i); ?>">
                             </div>

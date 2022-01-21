@@ -46,8 +46,19 @@
 <main class="content-container">
 
     <div class="registration-container">
-        <form action="preferencesSurvey" method="post">
+        <?php
+        if (isset($messages)) {
+            foreach ($messages as $msg) {
+                echo $msg;
+            }
+        }
+        ?>
+        <h1>Registration</h1>
+        <form action="registerComplete" method="post">
             <div class="input-container">
+                <label for="username">email
+                    <input type="text" name="username" placeholder="your username">
+                </label>
                 <label for="email">email
                     <input type="email" name="email" placeholder="enter your email">
                 </label>

@@ -6,6 +6,7 @@ require_once 'src/controlles/GameController.php';
 require_once 'src/controlles/ExploreController.php';
 require_once 'src/controlles/ProfileController.php';
 require_once 'src/controlles/RegistrationController.php';
+require_once 'src/controlles/RegistrationCompletionController.php';
 
 
 class Router {

@@ -64,8 +64,8 @@
                         <input name="password" placeholder="password" type="password"></input>
                     </div>
                     <div class="fotter">
-                        <h3><a href="#">Register</a> | <a href="#">Forgot password</a></h3>
-                        <a href="#"><h4>Login with Google</h4></a>
+                        <h3><a href="register">Register</a> | <a href="#">Forgot password</a></h3>
+                        <a href="register"><h4>Login with Google</h4></a>
                     </div>
                 </div>
                 <div class="right">
