@@ -36,10 +36,12 @@ class SecurityController extends AppController
             return;
         }
 
+        setcookie('email', $email ,time() + 3600,"/");
+        
         $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/preferencesSurvey");
+        header("Location: {$url}/profile");
 
-        //return $this->render('preferencesSurvey');
+        //return $this->render('profile');
 
     }
 }

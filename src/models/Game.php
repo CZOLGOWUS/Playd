@@ -7,7 +7,7 @@ class Game
     private $title;
     private $description;
     private $images = [];
-    private $attributes;
+    private $attributes = []; //[['attribute_name' => '0.0'],[],[]]
     private $steamUserScore;
 
 
@@ -49,7 +49,14 @@ class Game
     
     public function getImage(int $index) : string
     {
-        return $this->images[$index];
+        if(!($this->images[$index] === null))
+        {
+            return $this->images[$index];
+        }
+        else
+        {
+            return "";
+        }
     }
 
 /*

@@ -83,11 +83,24 @@ class GameRepository extends Repository
         $statement->execute();
     
         $imageStatement = $this->database->connect()->prepare(
-            'SELECT image_path FROM public."Images" WHERE id_game = :id'
+            'SELECT id_game,image_path FROM public."Images"'
         );
-        $imageStatement->bindParam(':id', $id, PDO::PARAM_INT);
-        $imageStatement->execute();
         
+        $imageStatement->execute();
+    
+        $attributeStatement = $this->database->connect()->prepare(
+            '
+            SELECT "Games".id_game, "Attributes".name, avg("User_game_score".score) as game_attribute_score
+            FROM "Games"
+            left join "User_game_score" on "Games".id_game = "User_game_score".id_game
+            left join "Attributes" on "Attributes".id_attribute = "User_game_score".id_attribute
+            GROUP BY "Games".id_game, "Attributes".name
+                    '
+        );
+    
+        $attributeStatement->execute();
+    
+        $attributes = $attributeStatement->fetchAll(PDO::FETCH_ASSOC);
         $games = $statement->fetchAll(PDO::FETCH_ASSOC);
         $gameImages = $imageStatement->fetchAll(PDO::FETCH_ASSOC);
         
@@ -96,18 +109,44 @@ class GameRepository extends Repository
             return array();
         }
         
+        $imagesOfId = array();
+
+        //var_dump($imagesOfId[$games[0]['id_game']]);
+        
+        $resultGames = array();
         foreach ($games as $game)
         {
-            $nextGame = new Game( $game['title'], $game['description']);
+            //associate all images with their id_game
+            $imagesOfId[] = [$game['id_game'] => []];
             foreach ($gameImages as $image)
             {
-                $nextGame->addImage($image['image_path']);
+                if($image['id_game'] === $game['id_game'])
+                {
+                    $imagesOfId[$game['id_game']][] = $image['image_path'];
+                }
             }
-            $games[] = $nextGame;
+            
+            $nextGame = new Game( $game['title'], $game['description']);
+            
+            //add images to their objects
+            if(!$imagesOfId[$game['id_game']] == array())
+                $nextGame->setAllImages($imagesOfId[$game['id_game']]);
+            //var_dump($nextGame);
+            $gameAttributeArray = array_filter(
+                $attributes,
+                static function ($attribute) use ($game)
+                {
+                    return ($attribute['id_game'] == $game['id_game']);
+                }
+            );
+            
+            $nextGame->setAllAttributes($gameAttributeArray);
+            
+            $resultGames[] = $nextGame;
             
         }
         
-        return $games;
+        return $resultGames;
     }
     
     public function addGame(Game $game) : void

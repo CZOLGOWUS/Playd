@@ -44,7 +44,7 @@
     </nav>
 
     <main class="content-container">
-        
+        <?php var_dump($game); ?>
             <div class="main-game-info">
                 <div class="game-photos">
                     <div class="photo-frame">

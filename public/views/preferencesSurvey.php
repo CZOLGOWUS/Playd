@@ -57,7 +57,7 @@
         <div class="instruction-container">
 
         </div>
-        <form action="explore"  method="get"  >
+        <form action="profile"  method="get"  >
             <div class="ratings-container">
                 <?php
                 for ($i = 0; $i <= 11; $i++):

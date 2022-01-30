@@ -52,7 +52,7 @@
                 Est qui et sit. Sed rerum repudiandae qui ipsa sint earum.
             </p>
             <div class="button-row">
-                <a href="#"><button class="button-75 try-button" role="button"><span class="text">Try</span></button></a>
+                <a href="login"><button class="button-75 try-button" role="button"><span class="text">Try</span></button></a>
                 <a><button class="button-75 learn-button" role="button"><span class="text">Learn more</span></button></a>
             </div>
 

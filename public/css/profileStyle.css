@@ -9,19 +9,30 @@
     display: flex;
 
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 
 .profile-column
 {
     width: 30%;
-    height: 40em;
-
     margin-top: 3em;
 
     display: flex;
     flex-direction: column;
+
+}
+
+.profile-column p
+{
+    margin: 0.3em 0 0.3em 0;
+    padding-top: 1em;
+}
+
+.profile-options
+{
+    background-color: #b0b0b0;
+
     justify-content: space-around;
     align-items: center;
 }
@@ -31,9 +42,15 @@
     width: 20em;
     height: 20em;
 
-    display: flex;
-    justify-content: space-between;
+    margin-top: 1em;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+
+    border-radius: 5%;
     background-color: #f34079;
 }
 
@@ -41,6 +58,10 @@
 {
     width: 80%;
     height: 80%;
+
+    margin-top: 1em;
+
+    border-radius: 50%;
 
     background-color: white;
 }
@@ -50,19 +71,43 @@
 
 }
 
-.profile-options
+.settings
 {
-    background-color: #b0b0b0;
+    margin-bottom: 0.5em;
 }
 
 .choice-score
 {
+    height: auto;
     background-color: #b0b0b0;
+
+    text-align: center;
+}
+
+.game-attribute
+{
+    padding: 0 2em 0.5em 2em;
+    margin: 0 2em 2em 2em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    color: #F94851;
+    border-bottom: solid #F94851;
 }
 
 .games-played-score
 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    text-align: center;
+
     background-color: #b0b0b0;
+
 }
 
 
@@ -71,6 +116,8 @@
     .content-wrapper
     {
         flex-direction: column;
+        justify-content: center;
+        align-content: center;
     }
 
     .profile-column

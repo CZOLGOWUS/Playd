@@ -46,8 +46,8 @@
 
     <div class="registration-container">
         <h1>Registration has been completed</h1>
-        Now you can start picking your favorite game types<br> start picking preferences!
-        <a href="preferencesSurvey"><button type="button">start</button></a>
+        Now you can login and start picking your favorite game types<br> start picking preferences!
+        <a href="preferencesSurvey"><button type="button">login</button></a>
     </div>
 
 </main>

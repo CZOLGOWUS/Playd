@@ -34,7 +34,7 @@ body,head
 
 .small-game-container
 {
-    height: 10em;
+    height: 14em;
     width: 20em;
 
     display: flex;
@@ -51,6 +51,15 @@ body,head
     height: 70%;
 
     background-color: #fc894d;
+    overflow: hidden;
+
+    text-align: center;
+}
+
+.small-game-container a > img
+{
+    width: 100%;
+    object-fit:cover;
 }
 
 .small-game-container .score-info
@@ -60,7 +69,7 @@ body,head
 
     display: flex;
 
-    justify-content: flex-start;
+    justify-content: space-around;
     align-content: center;
 
 
@@ -70,18 +79,21 @@ body,head
 .score-info .score
 {
     width: 25%;
-
-    margin-left: 0.5em;
+    margin: 0.5em 0 0 0.5em;
+    padding: 0;
 
     display: flex;
-
-
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
 
 }
 
 .score p
 {
-    margin-left: 0.2em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 .score i

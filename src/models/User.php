@@ -1,13 +1,15 @@
 <?php
 
 require_once "Game.php";
+require_once __DIR__."/../repository/UserRepository.php";
 
 class User
 {
     private $username;
     private $email;
     private $password;
-    private array $preferences = [];
+    private $attributes; // ['attribute' => 'score' ,'att' => 'score'...]
+    
 
     public function __construct(string $username,string $email,string $password)
     {
@@ -45,9 +47,37 @@ class User
     {
         $this->password = $password;
     }
-
-
-    public function addPreference(string $attribute,int $score )
+    
+    public function getAttribute(string $attribute) : array
+    {
+        $result = $this->attributes[$attribute];
+        return $result === null ? [] : [$attribute => $result ] ;
+    }
+    
+    public function setAttribute(string $name, int $score) : bool
+    {
+        $result = $this->attributes[$name];
+        if($result !== null)
+            return false;
+        
+        $this->attributes[$name] = $score;
+        
+        return  true;
+            
+    }
+    
+    public function getAttributes(): array
+    {
+        return $this->attributes;
+    }
+    
+    public function setAttributes(array $attributes): void
+    {
+        $this->attributes = $attributes;
+    }
+    
+    
+    public function addAttribute(string $attribute, int $score ) : void
     {
         if(!isset(Game::getAllAttributes()[$attribute]))
         {

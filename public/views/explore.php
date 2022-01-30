@@ -52,17 +52,26 @@
 
 <main class="content-container">
     <div class="content-wrapper">
+    <?php
+    $gamesCount = count($games);
+    for ($i=0; $i < $gamesCount  ;$i++) :
+        $gameAttributes = $games[$i]->getAttributes();
+    ?>
     
-    <?php for ($i=0;$i<30;$i++) : ?>
         <div class="small-game-container">
-            <div class="photo">
-            
-            </div>
+            <a href="#" class="photo">
+                <?php if ($games[$i]->getImage(0) !== ""): ?>
+                    <img src="public/uploads/<?php echo $games[$i]->getImage(0) ?>" alt="<?php echo $games[$i]->getImage(0) ?>">
+                <?php else : ?>
+                    <p>no image available</p>
+                <?php endif; ?>
+            </a>
             <div class="score-info">
-                <?php for ($j=0;$j<3;$j++): ?>
+
+                <?php for ($j=0;$j < min(3,count($gameAttributes)); $j++): ?>
                 <div class="score">
-                    <i class="fas fa-gamepad fa-2x"></i>
-                    <p>5.3</p>
+                    <p><?php echo $gameAttributes[$j]['name']; ?> </p>
+                    <p> <?php echo $gameAttributes[$j]['game_attribute_score']; ?> </p>
                 </div>
                 <?php endfor; ?>
             </div>
