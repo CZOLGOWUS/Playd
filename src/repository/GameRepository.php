@@ -1,6 +1,8 @@
 <?php
 
 require_once 'Repository.php';
+require_once 'AttributeRepository.php';
+require_once 'UserRepository.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/Game.php';
 
@@ -13,32 +15,17 @@ class GameRepository extends Repository
         );
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
-    
-        $imageStatement = $this->database->connect()->prepare(
-            'SELECT image_path FROM public."Images" WHERE id_game = :id'
-        );
-        $imageStatement->bindParam(':id', $id, PDO::PARAM_INT);
-        $imageStatement->execute();
-    
-        $game = $statement->fetch(PDO::FETCH_ASSOC);
-        $gameImages = $imageStatement->fetchAll(PDO::FETCH_ASSOC);
-    
-        if ($game === false || $gameImages === false)
-        {
-            return null;
-        }
-    
-        $result = new Game(
-            $game['title'],
-            $game['description']
-        );
+        $fetchedGame = $statement->fetch(PDO::FETCH_ASSOC);
         
-        foreach ($gameImages as $image)
-        {
-            $result->addImage($image['image_path']);
-        }
+        $result = $this->instantiateGameWithImages($id,$fetchedGame['title'],$fetchedGame['description']);
+        
+        if($result === null)
+            return null;
     
-        return $result;
+        $this->setGameAttributes($result);
+    
+    
+        return  $result;
     }
     
     public function getGameByTitle(string $title) : ?Game
@@ -48,22 +35,71 @@ class GameRepository extends Repository
         );
         $statement->bindParam(':title',$title,PDO::PARAM_STR);
         $statement->execute();
-        
         $game = $statement->fetch(PDO::FETCH_ASSOC);
         
+        $id = $game['id_game'];
+        $result = $this->instantiateGameWithImages($id, $game['title'], $game['description']);
+        
+        if($result === null)
+            return null;
+        
+        $this->setGameAttributes($result);
+        
+        
+        return  $result;
+    }
+    
+    public function setGameAttributes(Game $game) : void
+    {
+        $attributeStatement = $this->database->connect()->prepare(
+            '
+            SELECT "Games".id_game, "Attributes".name, avg("User_game_score".score) as game_attribute_score
+            FROM "Games"
+                     left join "User_game_score" on "Games".id_game = "User_game_score".id_game
+                     left join "Attributes" on "Attributes".id_attribute = "User_game_score".id_attribute
+            GROUP BY "Games".id_game, "Attributes".name having "Games".id_game = :id
+                    '
+        );
+        $id = $game->getId();
+        $attributeStatement->bindParam(':id', $id, PDO::PARAM_INT);
+        $attributeStatement->execute();
+        
+        $attributeList = $attributeStatement->fetchAll(PDO::FETCH_ASSOC);
+    
+        $response = $attributeList;
+        $converted = array();
+    
+        foreach ($response as $row)
+        {
+            $converted[$row['name']] = $row['game_attribute_score'];
+        }
+        
+        $game->setAllAttributes($converted);
+        
+    }
+    
+    public function instantiateGameWithImages($id, $title, $description): ?Game
+    {
         $imageStatement = $this->database->connect()->prepare(
             'SELECT image_path FROM public."Images" WHERE id_game = :id'
         );
         $imageStatement->bindParam(':id', $id, PDO::PARAM_INT);
         $imageStatement->execute();
+        
         $gameImages = $imageStatement->fetchAll(PDO::FETCH_ASSOC);
         
-        if($game === false || $gameImages === false)
+        if ($title === false || $description === false || $gameImages === false)
         {
             return null;
         }
         
-        $result = new Game( $game['title'], $game['description']);
+        $result = new Game(
+            $title,
+            $description
+        );
+        
+        $result->setId($id);
+        
         foreach ($gameImages as $image)
         {
             $result->addImage($image['image_path']);
@@ -71,6 +107,8 @@ class GameRepository extends Repository
         
         return $result;
     }
+    
+    
     
     public function getGames() : array
     {
@@ -80,13 +118,11 @@ class GameRepository extends Repository
             'SELECT * FROM public."Games"'
         );
         
-        $statement->execute();
     
         $imageStatement = $this->database->connect()->prepare(
             'SELECT id_game,image_path FROM public."Images"'
         );
         
-        $imageStatement->execute();
     
         $attributeStatement = $this->database->connect()->prepare(
             '
@@ -98,6 +134,9 @@ class GameRepository extends Repository
                     '
         );
     
+        
+        $statement->execute();
+        $imageStatement->execute();
         $attributeStatement->execute();
     
         $attributes = $attributeStatement->fetchAll(PDO::FETCH_ASSOC);
@@ -139,9 +178,17 @@ class GameRepository extends Repository
                     return ($attribute['id_game'] == $game['id_game']);
                 }
             );
+    
+            $response = $gameAttributeArray;        // your database response
+            $converted = array();               // declaring some clean array, just to be sure
+    
+            foreach ($response as $row)
+            {
+                $converted[$row['name']] = $row['game_attribute_score'];        // entire row (for example $response[1]) is copied
+            }
             
-            $nextGame->setAllAttributes($gameAttributeArray);
-            
+            $nextGame->setId($game['id_game']);
+            $nextGame->setAllAttributes($converted);
             $resultGames[] = $nextGame;
             
         }
@@ -169,5 +216,18 @@ class GameRepository extends Repository
           ]
         );
     }
+    
+    public function addAttributeToGame(string $email, int $getId,string $attribute, int $score)
+    {
+        /*todo(Me):
+             add functionality to set user_id on classes via User Repo
+             finish this funtion plus funtionality to adding scores to games via page
+        */
+        
+        $attributeRepo = new AttributeRepository();
+        $userRepo = new UserRepository();
+        
+    }
+    
     
 }

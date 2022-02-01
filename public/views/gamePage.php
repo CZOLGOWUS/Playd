@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/styles.css">
     <link rel="stylesheet" type="text/css" href="public/css/gamePageStyles.css">
     <script type="text/javascript" src="./public/js/gameImageSelector.js" defer></script>
+    <script type="text/javascript" src="./public/js/addNewAttributeGame.js" defer></script>
     <title>Welcome</title>
 </head>
 
@@ -43,68 +44,87 @@
         </div>
     </nav>
 
-    <main class="content-container">
-        <?php var_dump($game); ?>
-            <div class="main-game-info">
-                <div class="game-photos">
-                    <div class="photo-frame">
-                        <div class="photo-selected">
-                            <img src="public/uploads/<?php echo $game->getImage(0); ?>" >
-                        </div>
-                    </div>
-                    <div class="photo-gallery">
+    <main class="contentS-container">
+
+        <div class="main-game-info">
+            <div class="game-photos">
+                <div class="photo-frame">
+                    <div class="photo-selected">
                         <?php
                             $imageCount = count($game->getAllImages());
-                            for ($i=0;$i < $imageCount && $i < 5;$i++): ?>
-                            <div class="photo-in-gallery">
-                                <img src="public/uploads/<?php echo $game->getImage($i); ?>">
-                            </div>
-                        <?php endfor; ?>
+                            if ($imageCount > 0):
+                        ?>
+                            <img src="public/uploads/<?php echo $game->getImage(0); ?>" >
+                        <?php else: ?>
+                            <img src="public/img/no_image.png" >
+                        <?php endif; ?>
                     </div>
-                    <div class="socials-scores">
-                        <div class="social-icons">
-                            <div class="social-icon">
-                            
-                            </div>
-                            <div class="social-icon">
+                </div>
+                <div class="photo-gallery">
+                    <?php
+                        for ($i=0;$i < $imageCount && $i < 5;$i++): ?>
+                        <div class="photo-in-gallery">
+                            <img src="public/uploads/<?php echo $game->getImage($i); ?>">
+                        </div>
+                    <?php endfor; ?>
+                </div>
+                <div class="socials-scores">
+                    <div class="social-icons">
+                        <div class="social-icon">
+                        
+                        </div>
+                        <div class="social-icon">
 
-                            </div>
                         </div>
-                        <div class="score-icons">
-                            <div class="score-icon">
-                            
-                            </div>
-                            <div class="review-score">
-                                <p>5.6</p>
-                            </div>
+                    </div>
+                    <div class="score-icons">
+                        <div class="score-icon">
+                        
+                        </div>
+                        <div class="review-score">
+                            <p>5.6</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="game-description">
+            </div>
+            
+            <div class="game-description">
+                <div class="desc">
                 
                 </div>
-                
             </div>
+            
+        </div>
             
             <div class="more-game-info">
                 <div class="reviews-wrapper">
                 
                 </div>
-                <div class="important-info-wrapper">
-                
+                <div class="attributes-form-wrapper">
+                    <form  method="POST">
+                        
+                        <div class="attributes-container">
+    
+                            <?php
+                            if(isset($notLoggedIn))
+                                echo $notLoggedIn;
+                            $gameAttributes = $game->getAttributes();
+                            foreach($gameAttributes as $attribute => $score ) :  ?>
+                                <div class="game-attribute">
+                                    <div class="attribute-name"><?php echo $attribute; ?></div>
+                                    <div class="attribute-score"><?php echo $score; ?></div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        <button type="button" class="add-attribute-button"> add new attributes </button>
+                        <div class="submit-changes-button"></div>
+                            
+
+                    </form>
                 </div>
+
             </div>
-            
-            
-<!--            <h1>Game Page</h1>-->
-<!--            --><?php //if(isset($game)) : ?>
-<!--                <img src="/public/uploads/--><?php //$game->getImage() ?><!--">-->
-<!--                <h2>--><?//= $game->getTitle() ?><!--</h2>-->
-<!--                <h3>--><?//= $game->getDescription() ?><!--</h3>-->
-<!--            --><?php //else : ?>
-<!--                <p>could not load game page<p>-->
-<!--            --><?php //endif; ?>
     
     </main>
 </body>

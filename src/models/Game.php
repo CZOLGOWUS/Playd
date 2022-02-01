@@ -5,6 +5,7 @@ class Game
     private static array $allAttributes = ["heavy atmosphere","light atmosphere","challenging","casual"];
 
     private $title;
+    private int $id;
     private $description;
     private $images = [];
     private $attributes = []; //[['attribute_name' => '0.0'],[],[]]
@@ -28,8 +29,20 @@ class Game
     {
         $this->title = $title;
     }
-
-
+    
+    
+    public function getId(): int
+    {
+        return $this->id;
+    }
+    
+    
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+    
+    
     public function getDescription() : string
     {
         return $this->description;
@@ -81,6 +94,11 @@ class Game
     public function setAllAttributes($attributes): void
     {
         $this->attributes = $attributes;
+    }
+    
+    public function addAttribute(string $attribute,int $score) : void
+    {
+        $this->attributes[$attribute] = $score;
     }
     
     public static function getAllAttributes():array

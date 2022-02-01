@@ -25,7 +25,7 @@ const addFormRow = (root, index) => {
 
 const addAttrButtonHandler = (root) => {
     const submitButtonContainer = root.querySelector(".submit-changes-button");
-    const rowsContainer = root.querySelector(".attribute-container");
+    const rowsContainer = root.querySelector(".attributes-container");
 
     let clickingForTheFirstTime = true;
     let nextRowIndex = 0;
@@ -41,8 +41,8 @@ const addAttrButtonHandler = (root) => {
     }
 }
 
-const init = () => {
-    const root = document.querySelector(".choice-score form")
+const initAttributeAdder = () => {
+    const root = document.querySelector(".attributes-form-wrapper form")
     const addAttrButton = root.querySelector(".add-attribute-button");
 
     if (!root || !addAttrButton) return;
@@ -51,4 +51,4 @@ const init = () => {
 }
 
 
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', initAttributeAdder);

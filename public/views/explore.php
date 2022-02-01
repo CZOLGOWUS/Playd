@@ -55,25 +55,39 @@
     <?php
     $gamesCount = count($games);
     for ($i=0; $i < $gamesCount  ;$i++) :
+        $currentGame = $games[$i];
         $gameAttributes = $games[$i]->getAttributes();
     ?>
     
         <div class="small-game-container">
-            <a href="#" class="photo">
+            <a
+                href="gamePage?<?php echo 'title=' . $currentGame->getTitle() .'&id_game='. $currentGame->getId() ?>"
+            class="photo">
                 <?php if ($games[$i]->getImage(0) !== ""): ?>
                     <img src="public/uploads/<?php echo $games[$i]->getImage(0) ?>" alt="<?php echo $games[$i]->getImage(0) ?>">
                 <?php else : ?>
-                    <p>no image available</p>
+                    <img src="public/img/no_image.png" alt="no image">
                 <?php endif; ?>
             </a>
             <div class="score-info">
 
-                <?php for ($j=0;$j < min(3,count($gameAttributes)); $j++): ?>
+                <?php
+                    $count = 0;
+                    foreach ($gameAttributes as $name => $score):
+                ?>
                 <div class="score">
-                    <p><?php echo $gameAttributes[$j]['name']; ?> </p>
-                    <p> <?php echo $gameAttributes[$j]['game_attribute_score']; ?> </p>
+                    <p><?php echo $name; ?> </p>
+                    <p> <?php echo $score; ?> </p>
                 </div>
-                <?php endfor; ?>
+                <?php
+                    $count++;
+                    if ($count >= 3)
+                    {
+                        $count = 0;
+                        break;
+                    }
+                    endforeach;
+                ?>
             </div>
         </div>
     <?php endfor; ?>

@@ -3,20 +3,26 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Game.php';
 require_once __DIR__.'/../repository/GameRepository.php';
+require_once __DIR__.'/../repository/AttributeRepository.php';
+require_once __DIR__.'/../repository/UserRepository.php';
 
 class GameController extends AppController
 {
-    const MAX_FILE_SIZE = 1024*1024;
-    const SUPORTED_TYPES = ['image/png','image/jpg'];
-    const UPLOAD_DIRECTORY = "/../public/uploads/";
+    public const MAX_FILE_SIZE = 1024*1024;
+    public const SUPORTED_TYPES = ['image/png','image/jpg'];
+    public const UPLOAD_DIRECTORY = "/../public/uploads/";
 
-    private $messages = [];
-    private $gameRepository;
+    private array $messages = [];
+    private GameRepository $gameRepo;
+    private UserRepository $userRepo;
+
+    private $notLoggedInMessage = "";
     
     public function __construct()
     {
         parent::__construct();
-        $this->gameRepository = new GameRepository();
+        $this->gameRepo = new GameRepository();
+        $this->attributeRepo = new AttributeRepository();
     }
     
     
@@ -33,7 +39,7 @@ class GameController extends AppController
             );
 
             $game = new Game($_POST['title'],$_POST['description'],$_FILES['file']['name']);
-            $this->gameRepository->addGame($game);
+            $this->gameRepo->addGame($game);
             
             
             $this->render("gamePage", ["messages" => $this->messages,'game'=>$game]);
@@ -41,7 +47,7 @@ class GameController extends AppController
         }
 
         $this->render("addGame",[
-            'games' => $this->gameRepository->getGames(),
+            'games' => $this->gameRepo->getGames(),
             "messages" => $this->messages
         ]);
     }
@@ -65,9 +71,51 @@ class GameController extends AppController
 
     public function gamePage() : void
     {
-        $game = $this->gameRepository->getGameById(7);
+    
+        $gameRepo = new GameRepository();
+        $userRepo = new UserRepository();
         
-        $this->render("gamePage",['game' => $game]);
+        $fetchedGame = $this->gameRepo->getGameByTitle($_GET['title']);
+        
+        if($fetchedGame === null)
+        {
+            echo "game not found";
+            return;
+        }
+        
+        echo '<pre>'; print_r($fetchedGame); echo '</pre>';
+        
+        if($this->isPost() && !$_POST === null)
+        {
+
+            if($_COOKIE['email'] !== null)
+                $notLoggedInMessage = 'your are not logged in';
+
+            
+            $attributeCount = count($_POST)/2;
+            
+            for ($i = 0 ; $i < $attributeCount ; $i++)
+            {
+                $newAttribute = ['name' => $_POST['attributeName_'.($i)],'score' => $_POST['attributeScore_'.($i)]];
+                $hasAttribute = $fetchedGame->getAttributes()[$newAttribute['name']] === null;
+    
+    
+                if($hasAttribute)
+                    continue;
+    
+                $fetchedGame->addAttribute($newAttribute['name'],$newAttribute['score']);
+                if(!$gameRepo->addAttributeToGame($_COOKIE['email'],$fetchedGame->getId() ,$newAttribute['name'],(int)$newAttribute['score']))
+                {
+                    echo 'problem with adding attribute to user in ProfileController';
+                    return;
+                }
+            }
+            
+        }
+        
+        
+        $this->render("gamePage",['game' => $fetchedGame, 'notLoggedIn' => $notLoggedInMessage]);
+        
     }
 
 }

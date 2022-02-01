@@ -7,6 +7,7 @@ class User
 {
     private $username;
     private $email;
+    private $id;
     private $password;
     private $attributes; // ['attribute' => 'score' ,'att' => 'score'...]
     
@@ -36,6 +37,16 @@ class User
     public function setEmail(string $email): void
     {
         $this->email = $email;
+    }
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     public function getPassword(): string

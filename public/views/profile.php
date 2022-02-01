@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/49313450ad.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./public/js/addNewAttribute.js" defer></script>
+    <script type="text/javascript" src="./public/js/addNewAttributeUser.js" defer></script>
     <link rel="stylesheet" type="text/css" href="public/css/styles.css">
     <link rel="stylesheet" type="text/css" href="public/css/profileStyle.css">
     <title>Welcome</title>
@@ -73,7 +73,7 @@
             <h1>Score based on choice</h1>
 
             <form action="profile" method="post">
-                <div class="attribute-container">
+                <div class="attributes-container">
                     <?php
                     $userAttributes = $user->getAttributes();
                     foreach($userAttributes as $attribute => $score ) :  ?>

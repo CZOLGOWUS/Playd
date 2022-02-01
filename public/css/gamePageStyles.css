@@ -68,6 +68,9 @@ body,head
     height: 98%;
 
     margin: 0 ;
+    display: flex;
+
+    align-items: center;
 
     background-color: #F94851;
 }
@@ -90,11 +93,9 @@ body,head
     width: 100%;
     height: 20%;
 
-
     border-radius: 5px;
 
     background-color: #FD7A49;
-
 
 }
 
@@ -105,6 +106,8 @@ body,head
     margin: 0.5em;
 
     background-color: aqua;
+
+    cursor: pointer;
 }
 
 .photo-in-gallery img
@@ -186,9 +189,50 @@ body,head
     background-color: #f34079;
 }
 
-.important-info-wrapper
+
+.attributes-form-wrapper
 {
     width: 29%;
-    height: 25em;
+    padding: 1em 0 1em 0;
     background-color: #fc894d;
+}
+
+.game-attribute
+{
+    padding: 0 2em 0.5em 2em;
+    margin: 0 0.5em 1.3em 0.5em;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    color: #F94851;
+    border-bottom: solid #F94851;
+}
+
+@media screen and (max-width: 1300px)
+{
+    .main-game-info
+    {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+    }
+
+    .game-photos,.game-description,.reviews-wrapper,.important-info-wrapper, .attribute-list
+    {
+        width: 98%;
+        margin: 2% 0 2% 0;
+    }
+
+
+    .more-game-info
+    {
+        flex-direction: column-reverse;
+        justify-content: space-around;
+        align-items: center;
+    }
+
 }

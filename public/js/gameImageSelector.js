@@ -12,7 +12,7 @@ function gallery(activeImgTag, availableImgTags)
     }))
 }
 
-function init() {
+function initSelector() {
     // wspólny rodzic kilkalnej galerii i tego głównego zdjęcia
     const galleryRoot = document.querySelector(".game-photos")
 
@@ -26,4 +26,4 @@ function init() {
 }
 
 // po załadowaniu strony uruchom skrypt
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', initSelector);

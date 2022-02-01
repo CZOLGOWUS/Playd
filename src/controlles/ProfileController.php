@@ -53,7 +53,8 @@ class ProfileController extends AppController
                $fetchedUserData['user']->setAttribute($newAttribute['name'],$newAttribute['score']);
                if(!$userRepo->addAttributeToUser($fetchedUserData['user']->getEmail(),$newAttribute['name'],(int)$newAttribute['score']))
                {
-                   return 'problem with adding attribute to user in ProfileController';
+                   echo 'problem with adding attribute to user in ProfileController';
+                   return;
                }
                
             }

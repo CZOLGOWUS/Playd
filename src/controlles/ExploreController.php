@@ -16,9 +16,13 @@ class ExploreController extends AppController
     public function explore()
     {
         $gameRepo = new GameRepository();
-        $idUsed = array();
+        $allGames = $gameRepo->getGames();
+    
         
-        $this->render('explore', ['games' => $gameRepo->getGames()]);
+        
+        shuffle($allGames);
+        //echo '<pre>'; print_r($gameRepo->getGames()); echo '</pre>';
+        $this->render('explore', ['games' => $allGames]);
     }
     
 }
