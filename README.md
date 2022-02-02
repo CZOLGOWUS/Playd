@@ -25,12 +25,12 @@ loginPage,RegistarionPage:
 
 some screens from the project:
 ***index:***
-![name-of-you-image](https://github.com/CZOLGOWUS/Playd/issues/2#issue-1122250150)
+![name-of-you-image](https://user-images.githubusercontent.com/53970486/152214202-6c8d7b56-4c35-4c20-8b22-88d3992ff039.PNG)
 ***login:***
-![name-of-you-image](https://github.com/CZOLGOWUS/Playd/issues/2#issuecomment-1028225261)
+![name-of-you-image](https://user-images.githubusercontent.com/53970486/152214260-dc79e3b0-3216-4b3b-9c0c-8ccc264c6b28.PNG)
 ***profile:***
-![name-of-you-image](https://github.com/CZOLGOWUS/Playd/issues/2#issuecomment-1028225365)
+![name-of-you-image](https://user-images.githubusercontent.com/53970486/152214284-26274dc6-6ec1-4f4e-b68f-a775afb34eac.PNG)
 ***explore:***
-![name-of-you-image](https://github.com/CZOLGOWUS/Playd/issues/2#issuecomment-1028225485)
+![name-of-you-image](https://user-images.githubusercontent.com/53970486/152214310-62675173-0dac-4333-888c-5a99185015f8.PNG)
 ***gamePage:***
-![name-of-you-image](https://github.com/CZOLGOWUS/Playd/issues/2#issuecomment-1028225556)
+![name-of-you-image](https://user-images.githubusercontent.com/53970486/152214326-1f72ea7a-c9b0-4e26-8c46-0d814c24b2fe.PNG)
