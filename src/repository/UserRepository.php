@@ -114,7 +114,7 @@ class UserRepository extends Repository
         {
             $this->attributeRepo->InsertNewAttributeToDb($userDB['id_user'], $attribute);
     
-            $attributeId = $this->attributeRepo->getMostRecentInsertedAttributeId($userDB['id_user'], $attribute);
+            $attributeId = $this->attributeRepo->getAttributeId($attribute);
     
         }
     

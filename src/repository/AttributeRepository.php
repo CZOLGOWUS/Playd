@@ -77,16 +77,15 @@ class AttributeRepository extends Repository
     }
     
     
-    public function getMostRecentInsertedAttributeId(int $creatorId, string $attribute): int
+    public function getAttributeId(string $attribute): ?int
     {
         $getNewAttributeIdStatement = $this->database->connect()->prepare(
             '
                 SELECT id_attribute FROM "Attributes"
-                where id_creator = :id and name = :name
+                where name = :name
                 '
         );
         
-        $getNewAttributeIdStatement->bindParam(":id", $creatorId, PDO::PARAM_INT);
         $getNewAttributeIdStatement->bindParam(":name", $attribute, PDO::PARAM_STR);
         $getNewAttributeIdStatement->execute();
         return $getNewAttributeIdStatement->fetch(PDO::FETCH_ASSOC)['id_attribute'];

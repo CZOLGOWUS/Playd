@@ -5,7 +5,7 @@ class Game
     private static array $allAttributes = ["heavy atmosphere","light atmosphere","challenging","casual"];
 
     private $title;
-    private int $id;
+    private ?int $id;
     private $description;
     private $images = [];
     private $attributes = []; //[['attribute_name' => '0.0'],[],[]]
@@ -16,6 +16,7 @@ class Game
     {
         $this->title = $title;
         $this->description = $description;
+        $this->id = null;
     }
 
     //region geters_setters

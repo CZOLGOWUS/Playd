@@ -50,14 +50,17 @@ body {
     border-style: none none solid none;
     
     padding: 0 0 0.3em 0;
+    margin-right: 20%;
     
     color: rgba(0, 0, 0, 0.2);
     text-align: left;
 }
 
 #login-window>.right {
-    
-    position: relative;
+
+    position: absolute;
+    bottom: 25%;
+    left: 60%;
     text-align: right;
     
     width: 100%;
@@ -205,6 +208,9 @@ h3, h4
 
     #login-window>.right
     {
+        position: relative;
+        bottom: auto;
+        left: auto;
         margin: 20% 0;
 
         display: flex;

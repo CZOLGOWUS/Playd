@@ -75,6 +75,10 @@ class GameController extends AppController
         $gameRepo = new GameRepository();
         $userRepo = new UserRepository();
         
+        if($_GET['title'] === null)
+            return;
+            
+        
         $fetchedGame = $this->gameRepo->getGameByTitle($_GET['title']);
         
         if($fetchedGame === null)
@@ -83,38 +87,41 @@ class GameController extends AppController
             return;
         }
         
-        echo '<pre>'; print_r($fetchedGame); echo '</pre>';
-        
-        if($this->isPost() && !$_POST === null)
+        if($this->isPost() && $_POST !== null)
         {
-
-            if($_COOKIE['email'] !== null)
+            if($_COOKIE['email'] === null)
+            {
                 $notLoggedInMessage = 'your are not logged in';
-
+                $this->render("gamePage",['game' => $fetchedGame, 'notLoggedIn' => $notLoggedInMessage]);
+            }
             
             $attributeCount = count($_POST)/2;
             
             for ($i = 0 ; $i < $attributeCount ; $i++)
             {
                 $newAttribute = ['name' => $_POST['attributeName_'.($i)],'score' => $_POST['attributeScore_'.($i)]];
-                $hasAttribute = $fetchedGame->getAttributes()[$newAttribute['name']] === null;
+                $hasAttribute = $fetchedGame->getAttributes()[$newAttribute['name']] !== null;
     
     
                 if($hasAttribute)
+                {
+                    
                     continue;
-    
-                $fetchedGame->addAttribute($newAttribute['name'],$newAttribute['score']);
-                if(!$gameRepo->addAttributeToGame($_COOKIE['email'],$fetchedGame->getId() ,$newAttribute['name'],(int)$newAttribute['score']))
+                }
+                
+                if(!$gameRepo->addAttributeToGame($_COOKIE['email'],$fetchedGame->getTitle() ,$newAttribute['name'],(int)$newAttribute['score']))
                 {
                     echo 'problem with adding attribute to user in ProfileController';
                     return;
                 }
+                
+                $fetchedGame->addAttribute($newAttribute['name'],$newAttribute['score']);
             }
             
         }
-        
-        
-        $this->render("gamePage",['game' => $fetchedGame, 'notLoggedIn' => $notLoggedInMessage]);
+    
+        //echo '<pre>'; print_r($fetchedGame); echo '</pre>';
+        $this->render("gamePage",['game' => $fetchedGame]);
         
     }
 
