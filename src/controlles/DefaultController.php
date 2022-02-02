@@ -14,12 +14,7 @@ class DefaultController extends AppController
     {
         $this->render("preferencesSurvey");
     }
-
-    public function addGame()
-    {
-        $this->render("addGame");
-    }
-
+    
     public function contact()
     {
         $this->render("contact");

@@ -211,12 +211,16 @@ h3, h4
         position: relative;
         bottom: auto;
         left: auto;
-        margin: 20% 0;
 
         display: flex;
 
         justify-content: center;
         align-content: center;
+    }
+
+    #login-window .input-box
+    {
+        margin-right: 0;
     }
 
     #login-window>.right>.button-75

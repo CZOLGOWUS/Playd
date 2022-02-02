@@ -28,28 +28,41 @@ class GameController extends AppController
     
     public function addGame()
     {
-        if($this->isPost() &&
-            is_uploaded_file($_FILES['file']['tmp_name']) &&
-            $this->validate($_FILES['file']))
+        if($this->isPost())
         {
-            move_uploaded_file(
-                $_FILES['file']['tmp_name'],
-                dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name'],
+            $game = new Game($_POST['title'],$_POST['description']);
 
-            );
+            if(isset($_FILES['file']) &&
+                is_uploaded_file($_FILES['file']['tmp_name']) &&
+                $this->validate($_FILES['file'])
+                )
+                {
+                    move_uploaded_file(
+                        $_FILES['file']['tmp_name'],
+                        dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name'],
+    
+                    );
+                    $game->addImage($_FILES['file']['name']);
+                }
 
-            $game = new Game($_POST['title'],$_POST['description'],$_FILES['file']['name']);
             $this->gameRepo->addGame($game);
+            $addedGameId = $this->gameRepo->getGameId($game->getTitle());
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/gamePage?title=".$game->getTitle()."&id_game=".$addedGameId);
+            $this->render("gamePage" , ["messages" => $this->messages,'game'=>$game]);
             
-            
-            $this->render("gamePage", ["messages" => $this->messages,'game'=>$game]);
             return;
         }
 
-        $this->render("addGame",[
-            'games' => $this->gameRepo->getGames(),
-            "messages" => $this->messages
-        ]);
+        if($this->isGet())
+        {
+            $this->render(
+                'addGame',
+                [
+                    "messages" => $this->messages
+                ]
+            );
+        }
     }
 
     private function validate(array $file) : bool
@@ -89,6 +102,7 @@ class GameController extends AppController
         
         if($this->isPost() && $_POST !== null)
         {
+        
             if($_COOKIE['email'] === null)
             {
                 $notLoggedInMessage = 'your are not logged in';
@@ -99,23 +113,18 @@ class GameController extends AppController
             
             for ($i = 0 ; $i < $attributeCount ; $i++)
             {
+
                 $newAttribute = ['name' => $_POST['attributeName_'.($i)],'score' => $_POST['attributeScore_'.($i)]];
-                $hasAttribute = $fetchedGame->getAttributes()[$newAttribute['name']] !== null;
-    
-    
-                if($hasAttribute)
-                {
-                    
-                    continue;
-                }
                 
+
                 if(!$gameRepo->addAttributeToGame($_COOKIE['email'],$fetchedGame->getTitle() ,$newAttribute['name'],(int)$newAttribute['score']))
                 {
-                    echo 'problem with adding attribute to user in ProfileController';
-                    return;
+                    break;
+                    
                 }
-                
-                $fetchedGame->addAttribute($newAttribute['name'],$newAttribute['score']);
+
+                $gameRepo->setGameAttributes($fetchedGame);
+
             }
             
         }

@@ -37,6 +37,9 @@ class SecurityController extends AppController
             return;
         }
 
+        if(isset($_COOKIE['email']))
+            unset($_COOKIE['email']);
+        
         setcookie('email', $email ,time() + 3600,"/");
         
         $url = "http://$_SERVER[HTTP_HOST]";

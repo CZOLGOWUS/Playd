@@ -24,14 +24,14 @@
                 <a href="#"><li>Browse</li></a>
             </ul>
         </div>
-        <input class="mobile-search-bar" type="text"></input>
+        <input class="mobile-search-bar" type="text">
 
         <div class="left-side">
             <a href="explore" class="nav-button">Explore</a>
             <a href="explore" class="nav-button">Contact</a>
         </div>
         <div class="right-side">
-            <input class="search-bar" type="text"></input>
+            <input class="search-bar" type="text">
 
             <a href="#" class="nav-button">
                 <i class="fas fa-search fa-lg"></i>
@@ -55,7 +55,7 @@
                     }
                 }
                 ?>
-                <input type="text" name="title">
+                <input type="text" name="title" placeholder="title">
                 <textarea name="description" rows="5" placeholder="description"></textarea>
                 <input type="file" name="file" >
                 <button type="submit">upload</button>

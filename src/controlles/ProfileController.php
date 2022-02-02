@@ -17,7 +17,8 @@ class ProfileController extends AppController
         $email = $_COOKIE['email'];
         if($email == false)
         {
-            return $this->render('login', ['messages' => ['please log in']]);
+            $this->render('login', ['messages' => ['please log in']]);
+            return;
             
         }
         

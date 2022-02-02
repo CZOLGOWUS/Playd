@@ -207,7 +207,16 @@ class GameRepository extends Repository
                   '
         );
         
-        $id_creator = 1;
+        $userRepo = new UserRepository();
+        
+        if($_COOKIE['email'] === null)
+        {
+            echo 'no user is logged in, please log in';
+            return;
+        }
+        
+        $id_creator = $userRepo->getUserWithDBData($_COOKIE['email'])['id_user'];
+        
         $statement->execute(
           [
             $id_creator,
@@ -216,6 +225,23 @@ class GameRepository extends Repository
             $date->format('Y-m-d')
           ]
         );
+    }
+    
+    public function getGameId(string $title) : int
+    {
+        $statement = $this->database->connect()->prepare(
+            '
+                    SELECT id_game FROM "Games" where title = :title
+                  '
+        );
+        
+        $statement->bindParam(':title',$title,PDO::PARAM_STR);
+        $statement->execute();
+        
+        $gameTitle = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return $gameTitle['id_game'];
+        
     }
     
     public function addAttributeToGame(string $email, string $title, string $attribute, int $score) : bool
@@ -249,15 +275,44 @@ class GameRepository extends Repository
             VALUES (?,?,?,?)
             '
         );
+    
+        try
+        {
+            $insertStatement->execute(
+                [
+                    $fetchedUser['id_user'],
+                    $fetchedGame->getId(),
+                    $attributeId,
+                    $score
+                ]
+            );
+            
+        }
+        catch (PDOException $e)
+        {
 
-        $insertStatement->execute(
-            [
-                $fetchedUser['id_user'],
-                $fetchedGame->getId(),
-                $attributeId,
-                $score
-            ]
-        );
+            $updateStatement = $this->database->connect()->prepare(
+                '
+                UPDATE public."User_game_score"
+                SET id_attribute = ?, score = ?
+                where id_user = ? and id_game = ?
+                '
+            );
+            
+            $updateStatement->execute(
+                [
+                    $attributeId,
+                    $score,
+                    $fetchedUser['id_user'],
+                    $fetchedGame->getId()
+                ]
+            );
+
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
         
         return true;
         
