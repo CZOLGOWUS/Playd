@@ -23,14 +23,14 @@
                 <a href="explore"><li>Explore</li></a>
             </ul>
         </div>
-        <input class="mobile-search-bar" type="text"></input>
+        <input class="mobile-search-bar" type="text">
 
         <div class="left-side">
             <a href="explore" class="nav-button">Explore</a>
             <a href="contact" class="nav-button">Contact</a>
         </div>
         <div class="right-side">
-            <input class="search-bar" type="text"></input>
+            <input class="search-bar" type="text">
 
             <a href="#" class="nav-button">
                 <i class="fas fa-search fa-lg"></i>
