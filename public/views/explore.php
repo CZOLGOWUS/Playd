@@ -77,7 +77,7 @@
                 ?>
                 <div class="score">
                     <p><?php echo $name; ?> </p>
-                    <p> <?php echo $score; ?> </p>
+                    <p> <?php echo round($score,1) == 0 ? null : round($score,1); ?> </p>
                 </div>
                 <?php
                     $count++;

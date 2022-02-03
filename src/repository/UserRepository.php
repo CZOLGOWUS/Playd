@@ -101,10 +101,6 @@ class UserRepository extends Repository
         
         $userAttributes = $this->attributeRepo->getUserAttributes($email);
         
-        if(array_key_exists($attribute,$userAttributes))
-        {
-            return false;
-        }
         
         $userDB = $this->getUserWithDBData($email);
     
@@ -118,7 +114,15 @@ class UserRepository extends Repository
     
         }
     
-        $this->insertNewUserPreference($userDB['id_user'], $attributeId, $score);
+        try
+        {
+            $this->insertNewUserPreference($userDB['id_user'], $attributeId, $score);
+            
+        }
+        catch (PDOException $e)
+        {
+            $this->updateUserPreference($userDB['id_user'], $attributeId, $score);
+        }
     
         return true;
     }
@@ -140,6 +144,26 @@ class UserRepository extends Repository
                 $id_user,
                 $id_attribute,
                 $score
+            ]
+        
+        );
+    }
+    
+    public function updateUserPreference(int $id_user, int $id_attribute, int $score): void
+    {
+        $updateStatement = $this->database->connect()->prepare(
+            '
+                    UPDATE public."User_preferences"
+                    SET score = ?
+                    WHERE id_user = ? and id_attribute = ?
+                  '
+        );
+    
+        $updateStatement->execute(
+            [
+                $score,
+                $id_user,
+                $id_attribute
             ]
         
         );

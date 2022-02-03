@@ -48,7 +48,7 @@
     <main class="content-container">
         <div class="content">
             <img src="public/img/logo.png" alt="logo" id="logo">
-            <form id="login-window" method="post">
+            <form action="login" id="login-window" method="post">
                 <div class="left">
                     <?php
                     if (isset($messages)) {

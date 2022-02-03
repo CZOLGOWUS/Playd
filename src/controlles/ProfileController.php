@@ -27,7 +27,8 @@ class ProfileController extends AppController
         
         if($fetchedUserData['user'] == null || $fetchedUserData['user']->getEmail() != $email)
         {
-            return $this->render('login', ['messages' => ['something went wrong please try to log in again']]);
+            $this->render('login', ['messages' => ['something went wrong please try to log in again']]);
+            return;
             
         }
 
@@ -51,16 +52,15 @@ class ProfileController extends AppController
                if($hasAttribute)
                    continue;
                
-               $fetchedUserData['user']->setAttribute($newAttribute['name'],$newAttribute['score']);
+                $fetchedUserData['user']->setAttribute($newAttribute['name'],$newAttribute['score']);
                if(!$userRepo->addAttributeToUser($fetchedUserData['user']->getEmail(),$newAttribute['name'],(int)$newAttribute['score']))
                {
                    echo 'problem with adding attribute to user in ProfileController';
-                   return;
                }
                
             }
         }
-        
+        $fetchedUserData = $userRepo->getUserWithDBData($email);
         $this->render("profile",['user' => $fetchedUserData['user']]);
     }
     
