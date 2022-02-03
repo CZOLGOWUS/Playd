@@ -318,6 +318,32 @@ class GameRepository extends Repository
         
     }
     
+    
+    //fetch api
+    public function fetchGamesByTitle(string $searchString) : array
+    {
+        $searchString = '%' . strtolower( $searchString ) .'%';
+        
+        /*    left join (SELECT first( \'[attribute,score]\'::json ) FROM "Attributes" ORDER BY "Attributes".id_attribute ) as attribute_0,
+              (SELECT \'[attribute,score]\'::json) as attribute_1,
+              (SELECT \'[attribute,score]\'::json) as attribute_2,*/
+        
+        $statement = $this->database->connect()->prepare(
+            '
+            SELECT id_game ,title, (SELECT image_path FROM "Images" where "Games".id_game = "Images".id_game LIMIT 1) as image
+            FROM "Games"
+            where LOWER(title) LIKE :search OR LOWER("Games".description) LIKE :search
+            '
+        );
+        
+        $statement->bindParam(':search',$searchString,PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+    }
+    
+    
     public function addImageToGame($title, $image)
     {
     

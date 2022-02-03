@@ -17,6 +17,7 @@ Router::post('addGame', 'GameController');
 Router::get('gamePage', 'GameController');
 
 Router::get('explore','ExploreController');
+Router::get('search','ExploreController');
 
 Router::get('profile','ProfileController');
 

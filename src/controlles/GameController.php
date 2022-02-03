@@ -64,7 +64,64 @@ class GameController extends AppController
             );
         }
     }
-
+    
+    
+    public function gamePage() : void
+    {
+        
+        $gameRepo = new GameRepository();
+        $userRepo = new UserRepository();
+        
+        if($_GET['title'] === null)
+            return;
+        
+        
+        $fetchedGame = $this->gameRepo->getGameByTitle($_GET['title']);
+        
+        if($fetchedGame === null)
+        {
+            echo "game not found";
+            return;
+        }
+        
+        if($this->isPost() && $_POST !== null)
+        {
+            
+            if($_COOKIE['email'] === null)
+            {
+                $notLoggedInMessage = 'your are not logged in';
+                $this->render("gamePage",['game' => $fetchedGame, 'notLoggedIn' => $notLoggedInMessage]);
+            }
+            
+            $attributeCount = count($_POST)/2;
+            
+            for ($i = 0 ; $i < $attributeCount ; $i++)
+            {
+                
+                $newAttribute = ['name' => $_POST['attributeName_'.($i)],'score' => $_POST['attributeScore_'.($i)]];
+                
+                
+                if(!$gameRepo->addAttributeToGame($_COOKIE['email'],$fetchedGame->getTitle() ,$newAttribute['name'],(int)$newAttribute['score']))
+                {
+                    break;
+                    
+                }
+                
+                $gameRepo->setGameAttributes($fetchedGame);
+                
+            }
+            
+        }
+        
+        //echo '<pre>'; print_r($fetchedGame); echo '</pre>';
+        $this->render("gamePage",['game' => $fetchedGame]);
+        
+    }
+    
+    
+    
+    
+    
     private function validate(array $file) : bool
     {
         if($file['size'] > self::MAX_FILE_SIZE)
@@ -81,57 +138,6 @@ class GameController extends AppController
 
         return true;
     }
-
-    public function gamePage() : void
-    {
     
-        $gameRepo = new GameRepository();
-        $userRepo = new UserRepository();
-        
-        if($_GET['title'] === null)
-            return;
-            
-        
-        $fetchedGame = $this->gameRepo->getGameByTitle($_GET['title']);
-        
-        if($fetchedGame === null)
-        {
-            echo "game not found";
-            return;
-        }
-        
-        if($this->isPost() && $_POST !== null)
-        {
-        
-            if($_COOKIE['email'] === null)
-            {
-                $notLoggedInMessage = 'your are not logged in';
-                $this->render("gamePage",['game' => $fetchedGame, 'notLoggedIn' => $notLoggedInMessage]);
-            }
-            
-            $attributeCount = count($_POST)/2;
-            
-            for ($i = 0 ; $i < $attributeCount ; $i++)
-            {
-
-                $newAttribute = ['name' => $_POST['attributeName_'.($i)],'score' => $_POST['attributeScore_'.($i)]];
-                
-
-                if(!$gameRepo->addAttributeToGame($_COOKIE['email'],$fetchedGame->getTitle() ,$newAttribute['name'],(int)$newAttribute['score']))
-                {
-                    break;
-                    
-                }
-
-                $gameRepo->setGameAttributes($fetchedGame);
-
-            }
-            
-        }
-    
-        //echo '<pre>'; print_r($fetchedGame); echo '</pre>';
-        $this->render("gamePage",['game' => $fetchedGame]);
-        
-    }
 
 }
