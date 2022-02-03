@@ -47,15 +47,21 @@ function loadGames(games)
 
 function createGame(game)
 {
-    console.log(game);
     const template = document.querySelector("#game-template")
     const clone = template.content.cloneNode(true);
 
-    const image = clone.querySelector("a img");
-    image.src = `/public/uploads/${game.image}`;
+    const link = clone.querySelector("a");
+    link.href = `gamePage?title=${game.title}&id_game=${game.id_game}`;
 
-    const title = clone.querySelector("a");
-    title.href = `gamePage?title=${game.title}&id_game=${game.id_game}`;
+    if(game.image !== null) {
+        const image = clone.querySelector("a img");
+        image.src = `/public/uploads/${game.image}`;
+        image.alt = `${game.title}`;
+    }
+    else
+    {
+        link.innerText = game.title;
+    }
 
 /*    const attribute = clone.querySelector('.attribute-name');
     if(game.attributes !== null && )

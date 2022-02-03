@@ -104,7 +104,6 @@ class GameController extends AppController
                 if(!$gameRepo->addAttributeToGame($_COOKIE['email'],$fetchedGame->getTitle() ,$newAttribute['name'],(int)$newAttribute['score']))
                 {
                     break;
-                    
                 }
                 
                 $gameRepo->setGameAttributes($fetchedGame);

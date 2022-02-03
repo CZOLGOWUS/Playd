@@ -227,6 +227,10 @@ body,head
         margin: 2% 0 2% 0;
     }
 
+    .attributes-form-wrapper
+    {
+        width: 80%;
+    }
 
     .more-game-info
     {
@@ -234,5 +238,6 @@ body,head
         justify-content: space-around;
         align-items: center;
     }
+
 
 }

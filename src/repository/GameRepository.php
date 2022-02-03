@@ -149,8 +149,7 @@ class GameRepository extends Repository
         }
         
         $imagesOfId = array();
-
-        //var_dump($imagesOfId[$games[0]['id_game']]);
+        
         
         $resultGames = array();
         foreach ($games as $game)
@@ -170,7 +169,7 @@ class GameRepository extends Repository
             //add images to their objects
             if(!$imagesOfId[$game['id_game']] == array())
                 $nextGame->setAllImages($imagesOfId[$game['id_game']]);
-            //var_dump($nextGame);
+            
             $gameAttributeArray = array_filter(
                 $attributes,
                 static function ($attribute) use ($game)
@@ -330,8 +329,11 @@ class GameRepository extends Repository
         
         $statement = $this->database->connect()->prepare(
             '
-            SELECT id_game ,title, (SELECT image_path FROM "Images" where "Games".id_game = "Images".id_game LIMIT 1) as image
+            SELECT id_game ,
+                   title,
+                   (SELECT image_path FROM "Images" where "Games".id_game = "Images".id_game ORDER BY "Images".id_image ASC LIMIT 1) as image
             FROM "Games"
+            
             where LOWER(title) LIKE :search OR LOWER("Games".description) LIKE :search
             '
         );

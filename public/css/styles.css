@@ -225,21 +225,36 @@ a
         display: block;
     }
 
-    .left-side *, .right-side *
+    .left-side *, .right-side a
     {
         display: none;
     }
 
     .hamburger-menu
     {
-        display: flex !important;
+        display: flex;
 
         justify-content: center;
     }
 
-    .mobile-search-bar
+    .right-side
     {
-        display: block;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-bar
+    {
+        height: 2.2em;
+        width: 75%;
+
+        padding: 0em 1em;
+        margin: 0em 0em 0em 3em;
+
+        border-radius: 2em;
+        font-weight: normal;
+        border-style: none;
     }
 
 }
