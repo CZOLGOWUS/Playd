@@ -9,7 +9,6 @@ search.addEventListener('keyup',function (event)
         return;
 
 
-
     event.preventDefault();
     const data = {search: this.value};
 
@@ -30,8 +29,6 @@ search.addEventListener('keyup',function (event)
             gamesContainer.innerHTML = "";
             loadGames(games);
         });
-
-
 
 });
 
