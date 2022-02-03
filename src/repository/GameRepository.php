@@ -331,6 +331,7 @@ class GameRepository extends Repository
             '
             SELECT id_game ,
                    title,
+                   
                    (SELECT image_path FROM "Images" where "Games".id_game = "Images".id_game ORDER BY "Images".id_image ASC LIMIT 1) as image
             FROM "Games"
             

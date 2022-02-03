@@ -34,3 +34,5 @@ some screens from the project:
 ![name-of-you-image](https://user-images.githubusercontent.com/53970486/152214310-62675173-0dac-4333-888c-5a99185015f8.PNG)
 ***gamePage:***
 ![name-of-you-image](https://user-images.githubusercontent.com/53970486/152214326-1f72ea7a-c9b0-4e26-8c46-0d814c24b2fe.PNG)
+***erd:***
+![erd](https://user-images.githubusercontent.com/53970486/152422871-fa0c6b51-d7f9-4aea-b30a-df7becbed941.PNG)
